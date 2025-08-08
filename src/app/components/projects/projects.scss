@@ -23,7 +23,7 @@
   background: rgba(0, 30, 0, 0.2);
   border-left: 3px solid #00ff00;
   padding: 1rem;
-  margin-bottom: 1.5rem;
+  // margin-bottom: 1.5rem;
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
   opacity: 0;
   transform: translateY(15px);
@@ -35,7 +35,7 @@
 @keyframes fadeInProject {
   0% {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(0px);
     height: 0;
   }
   1% {

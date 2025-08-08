@@ -49,7 +49,7 @@ export class Terminal implements AfterViewInit {
   ngAfterViewInit() {
     this.autoTypeCommand('whoami', () => {
       setTimeout(() => {
-        // this.executeCommand('whoami'); // Presiona enter
+        this.executeCommand('whoami'); // Presiona enter
         this.isTyping = false;
         this.typingComplete = true;
   
@@ -69,10 +69,10 @@ export class Terminal implements AfterViewInit {
               }, 6400);
             });
   
-          }, 6400);
+          }, 3400);
         });
   
-      }, 6400);
+      }, 100);
     });
   }
   

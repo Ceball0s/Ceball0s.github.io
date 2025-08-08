@@ -69,7 +69,7 @@
 .command-input {
   display: flex;
   align-items: center;
-  padding-top: 20px;
+  // padding-top: 20px;
   padding-bottom: 20px;
   .prompt {
     color: #4caf50;
@@ -109,7 +109,7 @@
 .crt-terminal {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 90vh;
   border-radius: 8px;
   overflow: hidden;
   background: rgba(0, 20, 0, 0.2);
@@ -156,8 +156,8 @@
   overflow-y: auto;
   // padding: 1.5rem;
   box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.1);
-  padding: 1rem;
-  padding-bottom: 20px; 
+  // padding: 1rem;
+  // padding-bottom: 20px; 
 
   // min-height: 84vh;
   // flex: 0;           /* Evita que crezca para llenar espacio */
