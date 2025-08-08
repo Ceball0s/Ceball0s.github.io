@@ -1,0 +1,167 @@
+// .terminal-content {
+//   background: rgba(0, 20, 0, 0.2);
+//   // background: gold;
+//   // border: 1px solid var(--text-color);
+//   border: 1px solid var(--text-color);
+//   padding: 1.5rem;
+//   box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+//   overflow-y: auto;
+//   max-height: 100%; 
+//   flex: 1; 
+//   min-height: 0;
+//   overflow-y: auto;
+//   //padding: 1.2rem;
+//   padding: 16px;
+//   min-height: min-content; /* Crucial para el scroll */
+// }
+/* Contenido de la terminal */
+
+// .crt-terminal {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100vh;
+//   border-radius: 8px;
+//   overflow: hidden;
+//   // background: #000;
+//   // box-shadow: 0 0 25px rgba(0, 255, 0, 0.3);
+// }
+
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  color: var(--text-color);
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0.3rem 0;
+  caret-color: var(--text-color);
+  animation: blink 1s infinite;
+
+  &:focus {
+    outline: none;
+    border-bottom-width: 2px;
+  }
+}
+
+@keyframes blink {
+  50% { opacity: 0.7; }
+}
+
+.command-output {
+  margin: 1.5rem 0;
+  font-size: 1.3rem; /* Tamaño aumentado */
+  
+  .output-line {
+    color: var(--text-color);
+    line-height: 1.6;
+    text-shadow: 0 0 3px var(--glow);
+    
+    /* Colores para iconos */
+    &[data-type="folder"] { color: #4fc3f7; }
+    &[data-type="file"] { color: #ffeb3b; }
+    &[data-type="executable"] { color: #ff5722; }
+  }
+}
+
+
+.command-input {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .prompt {
+    color: #4caf50;
+    margin-right: 0.5rem;
+  }
+  
+  input {
+    background: transparent;
+    border: none;
+    color: #4caf50;
+    // font-family: 'Courier New', monospace;
+    flex-grow: 1;
+    caret-color: #4caf50;
+    
+    &:focus {
+      outline: none;
+    }
+  }
+}
+// scroll
+
+/* ESTILOS ESENCIALES PARA QUE FUNCIONE EL SCROLL */
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden; /* Importante */
+}
+
+.terminal-container {
+  height: 100%;
+  overflow-y: auto; /* Scroll vertical */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barra superior estilo ventana Linux */
+.crt-terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 20, 0, 0.2);
+  border: 1px solid var(--text-color);
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.3);
+}
+
+/* Barra superior estilo ventana Linux */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  background: #2b2b2b;
+  padding: 0.4rem 0.8rem;
+  border-bottom: 1px solid #111;
+  border-top: 10px solid #111;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 0.4rem;
+  margin-right: 1rem;
+}
+
+.window-buttons .btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn.close { background: #ff5f56; }
+.btn.minimize { background: #ffbd2e; }
+.btn.maximize { background: #27c93f; }
+
+.window-title {
+  color: #ccc;
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+/* Contenido de la terminal */
+.terminal-content {
+  flex: 1;
+  overflow-y: auto;
+  // padding: 1.5rem;
+  box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.1);
+  padding: 1rem;
+  padding-bottom: 20px; 
+
+  // min-height: 84vh;
+  // flex: 0;           /* Evita que crezca para llenar espacio */
+  // height: auto;      /* Se ajusta al contenido */
+  // max-height: 84vh;  /* Limita la altura para que no invada todo */
+}
+

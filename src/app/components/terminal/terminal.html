@@ -1,0 +1,45 @@
+<div  class="crt-terminal" >
+  <!-- <video autoplay muted loop playsinline id="bg-video">
+    <source src="assets/videos/alphabet-code-rain.1920x1080.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+  </video> -->
+  <!-- Barra de ventana estilo Linux -->
+  <div class="terminal-header">
+    <div class="window-buttons">
+      <span class="btn close"></span>
+      <span class="btn minimize"></span>
+      <span class="btn maximize"></span>
+    </div>
+    <span class="window-title">Terminal</span>
+  </div>
+  <div #terminalContainer class="terminal-content" >
+    <!-- <pre class="ascii-art">{{ asciiArt }}</pre> -->
+    <!-- Componente de Bienvenida -->
+    <!-- <app-welcome></app-welcome> -->
+    <!-- Historial de comandos -->
+    <div *ngFor="let item of commandHistory" class="command-item">
+      <div class="command-line">{{ item.command }}</div>
+      <div *ngFor="let line of item.output" class="output-line">
+        <!-- Componente About -->
+        <app-about *ngIf="line === 'about'"></app-about>
+        <!-- Componente Projects -->
+        <app-projects *ngIf="line === 'projects'"></app-projects>
+        <!-- Componente Links-->
+        <app-links *ngIf="line === 'links'"></app-links>
+        <!-- Texto normal -->
+        <span *ngIf="line !== 'about' && line !== 'projects' && line !== 'links'">
+          {{ line }}
+        </span>
+      </div>
+    </div>
+    <!-- Input actual -->
+    <div class="command-input">
+      <span class="prompt">user@portfolio:~$</span>
+      <input [(ngModel)]="currentCommand" 
+             (keyup.enter)="executeCommand(currentCommand)"
+             #commandInput
+             autofocus>
+    </div>
+    <div #scrollAnchor style="height: 0;"></div>
+  </div>
+</div>

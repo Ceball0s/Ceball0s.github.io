@@ -1,0 +1,33 @@
+<div class="projects-container">
+  <h2 class="terminal-header">PROYECTOS PROFESIONALES</h2>
+  
+  <div *ngFor="let project of projects; let i = index" 
+     class="project-item" 
+     [style.animation-delay]="(i * 3) + 's'"> 
+
+    <div class="project-header">
+      <span class="project-title">{{ project.title }}</span>
+      <span class="project-role">[{{ project.role }}]</span>
+    </div>
+    
+    <p class="project-description">>{{ project.description }}</p>
+    
+    <div class="project-details">
+      <div class="tech-list">
+        <span class="detail-label">TECNOLOGÍAS:</span>
+        <div class="tech-tags">
+          <span *ngFor="let tech of project.technologies" class="tech-tag">
+            <i [class]="getTechIcon(tech)"></i> {{ tech }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="achievements">
+        <span class="detail-label">LOGROS:</span>
+        <ul>
+          <li *ngFor="let achievement of project.achievements">• {{ achievement }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

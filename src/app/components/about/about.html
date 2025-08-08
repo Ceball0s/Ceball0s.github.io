@@ -1,0 +1,37 @@
+<div class="about-me">
+  <h3 class="terminal-header">{{ displayTitle }}</h3>
+  <div class="terminal-grid">
+    <div class="terminal-left">
+      <p><span class="label">NOMBRE:</span> {{ displayName }}</p>
+      <p><span class="label">DESCRIPCION:</span> {{ displayRole }}</p>
+      <p><span class="label">LOCALIZACIÓN:</span> {{ displayLocation }}</p>
+    </div>
+    <div class="terminal-right">
+      <p class="skills-title"><span class="label">HABILIDADES:</span></p>
+        <!-- <div *ngFor="let category of skillCategories" class="skill-category">
+          <div class="category-header">
+            <span class="category-icon">{{ categoryIcons[category.name] }}</span>
+            <span class="category-name">{{ category.name }}</span>
+          </div>
+          <div class="skill-items">
+            <span *ngFor="let skill of category.skills" class="skill-badge">{{ skill }}</span>
+          </div>
+        </div> -->
+      <div class="skills-grid">
+        <div *ngFor="let category of skillCategories" class="skill-category">
+          <div class="category-header">
+            <span class="category-icon">{{ categoryIcons[category.name] }}</span>
+            <span class="category-name">{{ category.name }}</span>
+          </div>
+          <div class="skill-items">
+            <span *ngFor="let skill of category.skills; let i = index"
+                  class="skill-badge"
+                  [style.animation-delay]="(i * 0.5) + 's'">
+              {{ skill }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

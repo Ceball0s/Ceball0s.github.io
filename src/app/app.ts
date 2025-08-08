@@ -8,5 +8,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('pixel-portfolio');
+  protected readonly title = signal('portfolio');
 }

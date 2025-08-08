@@ -1,0 +1,145 @@
+.projects-container {
+  padding: 1rem;
+  // font-family: 'Courier New', monospace;
+  color: #33ff33; /* Añadido para consistencia */
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Efecto glow como Projects */
+  font-size: 1.1rem;
+}
+
+.terminal-header {
+  color: #00ff00;
+  // border-bottom: 1px solid #00ff00;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+  text-transform: uppercase; /* Consistencia con Projects */
+  letter-spacing: 1px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.project-item {
+  background: rgba(0, 30, 0, 0.2);
+  border-left: 3px solid #00ff00;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+  opacity: 0;
+  transform: translateY(15px);
+  height: 0;
+  overflow: hidden;
+  animation: fadeInProject 0.8s ease forwards;
+}
+
+@keyframes fadeInProject {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+    height: 0;
+  }
+  1% {
+    height: auto; 
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+  }
+}
+
+
+.project-header {
+  color: #00ff00;
+  border-bottom: 1px solid #00ff00;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase; /* Añadido para consistencia */
+  letter-spacing: 1px; /* Mejor legibilidad */
+}
+
+.project-title {
+  color: #00ff00;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.project-role {
+  color: #4fc3f7;
+}
+
+.project-description {
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+.project-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.detail-label {
+  color: #00ff00;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.tech-tag i {
+  width: 16px;
+  text-align: center;
+}
+
+.achievements ul {
+  margin: 0;
+  padding-left: 1rem;
+  list-style-type: none;
+}
+
+.achievements li {
+  margin-bottom: 0.3rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.achievements li:before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: #00ff00;
+}
+.fade-in {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
