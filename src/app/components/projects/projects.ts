@@ -23,10 +23,27 @@ export class Projects {
     'Interfaz gráfica': 'fas fa-desktop',
     'Flask': 'fas fa-flask',
     'Docker': 'fab fa-docker',
-    'Jinja2': 'fas fa-code'
+    'Jinja2': 'fas fa-code',
+    'Kotlin': 'fas fa-code',
+    'Jetpack Compose': 'fas fa-mobile-alt',
+    'Firebase': 'fas fa-fire',
+    'API-Football': 'fas fa-futbol'
   };
 
   projects = [
+    {
+      title: 'WikiFut',
+      role: 'Desarrollador Full Stack',
+      description: 'Aplicación móvil para consultar partidos, equipos y jugadores de fútbol en tiempo real.',
+      technologies: ['Kotlin', 'Jetpack Compose', 'Firebase', 'API-Football'],
+      achievements: [
+        'Implementación de buscadores para jugadores, equipos y ligas',
+        'Desarrollo del sistema de favoritos con sincronización en tiempo real',
+        'Resolución de conflictos entre ramas y conexión funcional entre módulos',
+        'Diseño modular con arquitectura MVVM y Jetpack Compose',
+        'Integración con API externa y autenticación Firebase'
+      ]
+    },
     {
       title: 'UnivalleMatriculaApp',
       role: 'Líder de Desarrollo',

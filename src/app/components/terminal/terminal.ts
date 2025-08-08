@@ -49,7 +49,7 @@ export class Terminal implements AfterViewInit {
   ngAfterViewInit() {
     this.autoTypeCommand('whoami', () => {
       setTimeout(() => {
-        this.executeCommand('whoami'); // Presiona enter
+        // this.executeCommand('whoami'); // Presiona enter
         this.isTyping = false;
         this.typingComplete = true;
   
@@ -66,13 +66,13 @@ export class Terminal implements AfterViewInit {
                 this.executeCommand('links');
                 this.isTyping = false;
                 this.typingComplete = true;
-              }, 9800);
+              }, 6400);
             });
   
-          }, 5000);
+          }, 6400);
         });
   
-      }, 500);
+      }, 6400);
     });
   }
   
@@ -95,7 +95,7 @@ export class Terminal implements AfterViewInit {
         clearInterval(typingInterval);
         callback();
       }
-    }, 100);
+    }, 200);
   }
 
   executeCommand(commandInput: string) {
@@ -109,7 +109,7 @@ export class Terminal implements AfterViewInit {
       this.scrollTime(100);
     } else if (command === 'projects') {
       output = ['projects'];
-      this.scrollTime(9800);
+      this.scrollTime(6400);
     } else if (command === 'links') {
       output = ['links'];
       this.scrollTime(100);
@@ -130,7 +130,9 @@ export class Terminal implements AfterViewInit {
         'ls       - Listar archivos',
         'clear    - Limpiar terminal',
         'help     - Mostrar ayuda',
-        'whoami   - Mostrar información sobre mí'
+        'whoami   - Mostrar información sobre mí',
+        'links   - links a mis redes sociales',
+        'projects   - Mostrar mis projectos'
       ];
     } else {
       output = [`Comando no encontrado: ${command}`];
@@ -155,7 +157,6 @@ export class Terminal implements AfterViewInit {
 
   // scroll
   scrollToBottom() {
-    console.log("estoy bajando papu :V");
     if (!this.terminalContainer?.nativeElement) return;
     
     const container = this.terminalContainer.nativeElement;
