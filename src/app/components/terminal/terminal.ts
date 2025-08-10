@@ -30,9 +30,12 @@ export class Terminal implements AfterViewInit {
   currentCommand = '';
   isTyping = true;
   typingComplete = false;
-  asciiArt = `...`; // Tu arte ASCII aquí
+  
 
-  constructor() {}
+  // intervalo de tipeo
+  private typingInterval?: number;
+
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
   // ngAfterViewInit() {
   //   this.autoTypeCommand('whoami', () => {
@@ -46,57 +49,86 @@ export class Terminal implements AfterViewInit {
       
   //   });
   // }
+
   ngAfterViewInit() {
-    this.autoTypeCommand('whoami', () => {
-      setTimeout(() => {
-        this.executeCommand('whoami'); // Presiona enter
-        this.isTyping = false;
+    // secuencia de ejemplo (usa playSequence)
+    this.playSequence([
+      { cmd: 'whoami', after: 1200 },
+      { cmd: 'projects', after: 6400 },
+      { cmd: 'links', after: 500 }
+    ]);
+  }
+
+  // ngOnDestroy() {
+  //   this.destroyed = true;
+  //   this.stopAutoScroll();
+  //   if (this.typingIntervalId) clearInterval(this.typingIntervalId);
+  //   if (this.scrollCheckTimeout) clearTimeout(this.scrollCheckTimeout);
+  //   if (this.scrollSubscription) this.scrollSubscription.unsubscribe();
+  // }
+  // Play sequence: mantiene el flujo sin anidar callbacks
+  playSequence(commands: { cmd: string; after?: number }[]) {
+    let idx = 0;
+    const next = () => {
+      if (idx >= commands.length) {
         this.typingComplete = true;
-  
-        // Segundo comando
-        this.autoTypeCommand('projects', () => {
-          setTimeout(() => {
-            this.executeCommand('projects');
-            this.isTyping = false;
-            this.typingComplete = true;
-  
-            // Tercer comando
-            this.autoTypeCommand('links', () => {
-              setTimeout(() => {
-                this.executeCommand('links');
-                this.isTyping = false;
-                this.typingComplete = true;
-              }, 6400);
-            });
-  
-          }, 3400);
-        });
-  
-      }, 100);
+        this.cdr.detectChanges();
+        return;
+      }
+      const { cmd, after = 500 } = commands[idx++];
+      this.autoTypeCommand(cmd, () => {
+        // pequeño yield para asegurar render final del tipeo
+        setTimeout(() => {
+          this.executeCommand(cmd);
+          // esperar "after" ms antes del siguiente
+          setTimeout(next, after);
+        }, 40);
+      });
+    };
+    next();
+  }
+
+
+  // autoType con callbacks y forzando detectChanges
+  autoTypeCommand(command: string, callback: () => void) {
+    this.clearTypingInterval();
+    this.currentCommand = '';
+    let i = 0;
+    this.isTyping = true;
+    this.cdr.detectChanges();
+
+    // correr intervalo dentro de la zona para que detecte cambios
+    this.ngZone.run(() => {
+      this.typingInterval = window.setInterval(() => {
+        if (i < command.length) {
+          this.currentCommand += command.charAt(i);
+          i++;
+          this.cdr.detectChanges();
+          this.scrollToBottom();
+        } else {
+          this.clearTypingInterval();
+          this.isTyping = false;
+          this.cdr.detectChanges();
+          callback();
+        }
+      }, 140); // velocidad de tipeo (ajusta)
     });
   }
-  
 
-  isComponent(output: any): boolean {
-    return output && typeof output === 'object' && 'component' in output;
+  private clearTypingInterval() {
+    if (this.typingInterval !== undefined) {
+      clearInterval(this.typingInterval);
+      this.typingInterval = undefined;
+    }
   }
 
-  getComponentType(output: any): any {
-    return output.component;
-  }
+  // isComponent(output: any): boolean {
+  //   return output && typeof output === 'object' && 'component' in output;
+  // }
 
-  autoTypeCommand(command: string, callback: () => void) {
-    let i = 0;
-    const typingInterval = setInterval(() => {
-      if (i < command.length) {
-        this.currentCommand += command.charAt(i);
-        i++;
-      } else {
-        clearInterval(typingInterval);
-        callback();
-      }
-    }, 200);
-  }
+  // getComponentType(output: any): any {
+  //   return output.component;
+  // }
 
   executeCommand(commandInput: string) {
     const command = commandInput.trim();
@@ -105,13 +137,13 @@ export class Terminal implements AfterViewInit {
     let output: any[] = [];
   
     if (command === 'whoami') {
-      output = ['about'];
+      output = [{ component: 'about' }];
       this.scrollTime(100);
     } else if (command === 'projects') {
-      output = ['projects'];
+      output = [{ component: 'projects' }];
       this.scrollTime(6400);
     } else if (command === 'links') {
-      output = ['links'];
+      output = [{ component: 'links' }];
       this.scrollTime(100);
     } else if (command === 'clear') {
       this.commandHistory = [];
@@ -124,6 +156,7 @@ export class Terminal implements AfterViewInit {
         'drwxr-xr-x  user user 4.0 KB  📁  Downloads',
         '-rw-r--r--  user user  12 KB  📄  resume.pdf'
       ];
+      this.scrollTime(50);
     } else if (command === 'help') {
       output = [
         'Comandos disponibles:',
@@ -131,22 +164,23 @@ export class Terminal implements AfterViewInit {
         'clear    - Limpiar terminal',
         'help     - Mostrar ayuda',
         'whoami   - Mostrar información sobre mí',
-        'links   - links a mis redes sociales',
-        'projects   - Mostrar mis projectos'
+        'links    - Links a mis redes sociales',
+        'projects - Mostrar mis proyectos'
       ];
     } else {
       output = [`Comando no encontrado: ${command}`];
     }
   
-    this.commandHistory.push({
-      command: `user@portfolio:~$ ${command}`,
-      output: output
-    });
-  
+    this.commandHistory = [
+      ...this.commandHistory,
+      { command: `user@portfolio:~$ ${command}`, output }
+    ];
+
     this.currentCommand = '';
-    // this.cdr.detectChanges();
-    // this.startAutoScroll(); // Reactivar scroll automático
+    this.cdr.detectChanges();
+
   }
+  
 
   scrollTime(tiempo: any){
     this.startAutoScroll(); 

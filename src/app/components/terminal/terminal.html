@@ -20,14 +20,21 @@
     <div *ngFor="let item of commandHistory" class="command-item">
       <div class="command-line">{{ item.command }}</div>
       <div *ngFor="let line of item.output" class="output-line">
-        <!-- Componente About -->
+        <!-- Componente About
         <app-about *ngIf="line === 'about'"></app-about>
-        <!-- Componente Projects -->
+        
         <app-projects *ngIf="line === 'projects'"></app-projects>
+        
+        <app-links *ngIf="line === 'links'"></app-links> -->
+
+        <app-about *ngIf="line.component === 'about'"></app-about>
+        <!-- Componente Projects -->
+        <app-projects *ngIf="line.component === 'projects'"></app-projects>
         <!-- Componente Links-->
-        <app-links *ngIf="line === 'links'"></app-links>
+        <app-links *ngIf="line.component === 'links'"></app-links>
         <!-- Texto normal -->
-        <span *ngIf="line !== 'about' && line !== 'projects' && line !== 'links'">
+        <!-- <span *ngIf="line !== 'about' && line !== 'projects' && line !== 'links'"> -->
+        <span *ngIf="!line.component">
           {{ line }}
         </span>
       </div>
