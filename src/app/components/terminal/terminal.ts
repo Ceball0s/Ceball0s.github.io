@@ -37,18 +37,6 @@ export class Terminal implements AfterViewInit {
 
   constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
-  // ngAfterViewInit() {
-  //   this.autoTypeCommand('whoami', () => {
-  //     setTimeout(() => {
-  //       // this.executeCommand('whoami');
-  //       this.isTyping = false;
-  //       this.typingComplete = true;
-  //       // this.inputField.nativeElement.focus();
-  //     }, 1000);
-  //     setTimeout(() => {}, 1000);
-      
-  //   });
-  // }
 
   ngAfterViewInit() {
     // secuencia de ejemplo (usa playSequence)
@@ -66,6 +54,8 @@ export class Terminal implements AfterViewInit {
   //   if (this.scrollCheckTimeout) clearTimeout(this.scrollCheckTimeout);
   //   if (this.scrollSubscription) this.scrollSubscription.unsubscribe();
   // }
+
+
   // Play sequence: mantiene el flujo sin anidar callbacks
   playSequence(commands: { cmd: string; after?: number }[]) {
     let idx = 0;
