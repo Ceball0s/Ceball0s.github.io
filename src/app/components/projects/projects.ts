@@ -42,7 +42,8 @@ export class Projects {
         'Resolución de conflictos entre ramas y conexión funcional entre módulos',
         'Diseño modular con arquitectura MVVM y Jetpack Compose',
         'Integración con API externa y autenticación Firebase'
-      ]
+      ],
+      url: 'https://github.com/StivenHenao/WikiFut' 
     },
     {
       title: 'UnivalleMatriculaApp',
@@ -53,7 +54,8 @@ export class Projects {
         'Arquitectura modular para mejor escalabilidad',
         'Implementación de temas claro/oscuro',
         'Gestor de materias con carga desde Excel'
-      ]
+      ],
+      url: 'https://github.com/Ceball0s/UnivalleMatriculaApp' 
     },
     {
       title: 'SubastALL',
@@ -64,7 +66,8 @@ export class Projects {
         'Backend completo con autenticación JWT',
         'Documentación de 20+ endpoints REST',
         'Optimización de consultas SQL'
-      ]
+      ],
+      url: 'https://github.com/Ceball0s/SpringSubastAll' 
     },
     {
       title: 'IA Ajedrez de Alicia',
@@ -75,7 +78,8 @@ export class Projects {
         'Implementación de algoritmo de decisión',
         'Interfaz de usuario intuitiva',
         'Pruebas exhaustivas de rendimiento'
-      ]
+      ],
+      url: 'https://github.com/Ceball0s/IA_Ajedrez_de_Alicia' 
     },
     {
       title: 'DulceriaWeb',
@@ -86,7 +90,8 @@ export class Projects {
         'API RESTful con autenticación',
         'Operaciones CRUD completas',
         'Despliegue con Docker Compose'
-      ]
+      ],
+      url: 'https://github.com/Ceball0s/DulceriaWeb-Python-Flask' 
     }
   ];
 

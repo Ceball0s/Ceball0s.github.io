@@ -141,5 +141,13 @@
   }
 }
 
+.project-item a {
+  text-decoration: none; /* quita la línea */
+  color: inherit;        /* usa el color de texto actual */
+  display: block;        /* hace que el enlace ocupe todo el contenedor */
+}
 
-
+.project-item a:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* efecto hover suave */
+  cursor: pointer;
+}
