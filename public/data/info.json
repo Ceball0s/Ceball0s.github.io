@@ -1,0 +1,55 @@
+{
+  "socialLinks": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/miguel-angel-ceballos-914970284/",
+      "iconClass": "fab fa-linkedin",
+      "color": "#0A66C2"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/Ceball0s",
+      "iconClass": "fab fa-github",
+      "color": "#181717"
+    },
+    {
+      "name": "Correo electrónico",
+      "url": "mailto:miguel.yate@correounivalle.edu.co",
+      "iconClass": "fas fa-envelope",
+      "color": "#EA4335"
+    }
+  ],
+  "fullTexts": {
+    "title": "SOBRE MÍ",
+    "name": "Miguel Angel Ceballos",
+    "role": "Desarrollador Full Stack con experiencia en diseño y desarrollo de aplicaciones web, móviles y soluciones en la nube. Apasionado por aprender nuevas tecnologías y enfrentar desafíos técnicos. Especializado en arquitecturas limpias y escalables.",
+    "location": "Tuluá, Colombia",
+    "skills": []
+  },
+  "skillCategories": [
+    {
+      "name": "Lenguajes",
+      "skills": ["C++", "Python", "Java", "JavaScript", "TypeScript", "Kotlin", "Scala", "SQL"]
+    },
+    {
+      "name": "Frontend",
+      "skills": ["HTML", "CSS", "React", "Angular", "Figma"]
+    },
+    {
+      "name": "Backend",
+      "skills": ["Node.js", "Express", "Flask", "Spring Boot", "APIs RESTful"]
+    },
+    {
+      "name": "Datos",
+      "skills": ["MySQL", "PostgreSQL", "MongoDB", "Análisis de datos"]
+    },
+    {
+      "name": "DevOps",
+      "skills": ["Docker", "AWS", "Git", "Linux", "CI/CD"]
+    },
+    {
+      "name": "Móvil",
+      "skills": ["Android Studio", "React Native", "Kotlin"]
+    }
+  ]
+}

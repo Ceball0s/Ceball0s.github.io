@@ -1,0 +1,783 @@
+---
+// components/FileExplorer.astro
+import type { Project } from '../types';
+
+// Función para determinar el ícono según las tecnologías
+function getProjectIcon(technologies: string[]): string {
+  const techs = technologies.map(t => t.toLowerCase());
+  
+  if (techs.some(t => t.includes('kotlin') || t.includes('android'))) {
+    return 'android';
+  } else if (techs.some(t => t.includes('react') || t.includes('native'))) {
+    return 'react';
+  } else if (techs.some(t => t.includes('spring') || t.includes('java'))) {
+    return 'java';
+  } else if (techs.some(t => t.includes('python') || t.includes('flask'))) {
+    return 'python';
+  } else if (techs.some(t => t.includes('docker'))) {
+    return 'docker';
+  } else {
+    return 'code';
+  }
+}
+
+// Cargar proyectos desde JSON o usar datos por defecto
+// Cargar proyectos desde JSON
+let projects: Array<any> = [];
+
+try {
+  // En Astro, para cargar archivos JSON desde public/, debemos usar fetch
+  // o poner el archivo en src/ y usar import. Usemos fetch:
+  const response = await fetch('/data/projects.json');
+  if (response.ok) {
+    projects = await response.json();
+  } else {
+    throw new Error('No se pudo cargar el archivo JSON');
+  }
+} catch (error) {
+  console.error('Error loading projects.json:', error);
+  
+  // Si falla fetch, intentar cargar con import (para desarrollo)
+  try {
+    const projectsData = await import('../../public/data/projects.json');
+    projects = projectsData.default || projectsData;
+  } catch (importError) {
+    console.error('También falló import:', importError);
+    
+    // Datos de respaldo usando tu estructura exacta
+    projects = [
+      {
+        title: 'WikiFut',
+        role: 'Desarrollador Full Stack',
+        description: 'Aplicación móvil para consultar partidos, equipos y jugadores de fútbol en tiempo real.',
+        technologies: ['Kotlin', 'Jetpack Compose', 'Firebase', 'API-Football'],
+        achievements: [
+          'Implementación de buscadores para jugadores, equipos y ligas',
+          'Desarrollo del sistema de favoritos con sincronización en tiempo real',
+          'Resolución de conflictos entre ramas y conexión funcional entre módulos',
+          'Diseño modular con arquitectura MVVM y Jetpack Compose',
+          'Integración con API externa y autenticación Firebase'
+        ],
+        url: 'https://github.com/StivenHenao/WikiFut'
+      },
+      {
+        title: 'UnivalleMatriculaApp',
+        role: 'Líder de Desarrollo',
+        description: 'Aplicación de matrículas para la Universidad del Valle',
+        technologies: ['React Native', 'Figma', 'Excel Integration', 'React Navigation'],
+        achievements: [
+          'Arquitectura modular para mejor escalabilidad',
+          'Implementación de temas claro/oscuro',
+          'Gestor de materias con carga desde Excel'
+        ],
+        url: 'https://github.com/Ceball0s/UnivalleMatriculaApp'
+      },
+      {
+        title: 'SubastALL',
+        role: 'Líder de Desarrollo y Backend',
+        description: 'Plataforma de subastas en línea',
+        technologies: ['Spring Boot', 'JWT', 'PostgreSQL', 'React'],
+        achievements: [
+          'Backend completo con autenticación JWT',
+          'Documentación de 20+ endpoints REST',
+          'Optimización de consultas SQL'
+        ],
+        url: 'https://github.com/Ceball0s/SpringSubastAll'
+      },
+      {
+        title: 'IA Ajedrez de Alicia',
+        role: 'Desarrollador Principal',
+        description: 'Inteligencia artificial para jugar ajedrez',
+        technologies: ['Python', 'Algoritmo Minimax', 'Interfaz gráfica'],
+        achievements: [
+          'Implementación de algoritmo de decisión',
+          'Interfaz de usuario intuitiva',
+          'Pruebas exhaustivas de rendimiento'
+        ],
+        url: 'https://github.com/Ceball0s/IA_Ajedrez_de_Alicia'
+      },
+      {
+        title: 'DulceriaWeb',
+        role: 'Desarrollador Principal',
+        description: 'Sistema de gestión para dulcería',
+        technologies: ['Flask', 'PostgreSQL', 'Docker', 'Jinja2'],
+        achievements: [
+          'API RESTful con autenticación',
+          'Operaciones CRUD completas',
+          'Despliegue con Docker Compose'
+        ],
+        url: 'https://github.com/Ceball0s/DulceriaWeb-Python-Flask'
+      }
+    ];
+  }
+}
+
+// Asegurarnos de que cada proyecto tenga un ID para las keys de React
+projects = projects.map((project, index) => ({
+  ...project,
+  id: project.id || `project-${index + 1}`
+}));
+---
+
+<div class="file-explorer">
+  <!-- Barra de título -->
+  <div class="explorer-titlebar">
+    <div class="explorer-buttons">
+      <span class="close-btn"></span>
+      <span class="minimize-btn"></span>
+      <span class="maximize-btn"></span>
+    </div>
+    <div class="explorer-path">
+      <span class="path-text">~/Portfolio/Proyectos ({projects.length})</span>
+    </div>
+    <div class="view-controls">
+      <button class="view-btn active" title="Vista detallada">
+        <i class="fas fa-th-large"></i>
+      </button>
+      <button class="view-btn" title="Vista compacta">
+        <i class="fas fa-list"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Barra de herramientas -->
+  <div class="explorer-toolbar">
+    <div class="toolbar-left">
+      <button class="toolbar-btn" title="Ordenar por nombre">
+        <i class="fas fa-sort-alpha-down"></i>
+      </button>
+      <button class="toolbar-btn" title="Ordenar por fecha">
+        <i class="fas fa-sort-numeric-down"></i>
+      </button>
+      <button class="toolbar-btn" title="Filtrar proyectos">
+        <i class="fas fa-filter"></i>
+      </button>
+      <div class="project-counter">
+        <i class="fas fa-code-branch"></i>
+        <span>{projects.length} proyectos</span>
+      </div>
+    </div>
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Buscar proyectos, tecnologías..." />
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="explorer-content">
+    {projects.map(project => {
+      const iconType = getProjectIcon(project.technologies);
+      let iconClass = 'fas fa-code';
+      
+      switch(iconType) {
+        case 'android':
+          iconClass = 'fab fa-android';
+          break;
+        case 'react':
+          iconClass = 'fab fa-react';
+          break;
+        case 'java':
+          iconClass = 'fab fa-java';
+          break;
+        case 'python':
+          iconClass = 'fab fa-python';
+          break;
+        case 'docker':
+          iconClass = 'fab fa-docker';
+          break;
+        default:
+          iconClass = 'fas fa-code';
+      }
+      
+      return (
+        <div class="file-item" key={project.id} on:click={() => window.open(project.url, '_blank')}>
+          <!-- Icono del proyecto -->
+          <div class="file-icon">
+            <i class={iconClass}></i>
+          </div>
+          
+          <!-- Información principal -->
+          <div class="file-info">
+            <div class="file-header">
+              <h3 class="file-title">{project.title}</h3>
+              <div class="file-role">
+                <i class="fas fa-user-tag"></i>
+                <span>{project.role}</span>
+              </div>
+            </div>
+            
+            <p class="file-description">{project.description}</p>
+            
+            <!-- Tecnologías -->
+            <div class="technologies-section">
+              <h4><i class="fas fa-code"></i> Tecnologías:</h4>
+              <div class="technologies-list">
+                {project.technologies.map((tech, idx) => (
+                  <span class="tech-tag" key={idx}>{tech}</span>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Logros/Features -->
+            {project.achievements && project.achievements.length > 0 && (
+              <div class="achievements-section">
+                <h4><i class="fas fa-trophy"></i> Logros:</h4>
+                <ul class="achievements-list">
+                  {project.achievements.slice(0, 5).map((achievement, idx) => (
+                    <li key={idx}>{achievement}</li>
+                  ))}
+                  {project.achievements.length > 5 && (
+                    <li class="more-items">+{project.achievements.length - 3} más...</li>
+                  )}
+                </ul>
+              </div>
+            )}
+            
+            <!-- Acciones -->
+            <div class="file-actions">
+              <a 
+                href={project.url} 
+                class="github-btn"
+                onClick={(e) => e.stopPropagation()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-github"></i>
+                <span>Ver en GitHub</span>
+              </a>
+              <div class="file-stats">
+                <span class="stat-item">
+                  <i class="fas fa-cogs"></i>
+                  {project.technologies.length} tecnologías
+                </span>
+                {project.achievements && (
+                  <span class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    {project.achievements.length} logros
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Barra de estado -->
+  <div class="explorer-statusbar">
+    <div class="status-left">
+      <span class="selected-count">0 seleccionados</span>
+      <span class="total-size">{projects.length} proyectos</span>
+    </div>
+    <div class="status-right">
+      <span class="view-mode">Vista detallada</span>
+      <span class="sort-order">Orden: Nombre</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .file-explorer {
+    background: #2d2d2d;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    
+    /* MUCHO MÁS GRANDE */
+    width: 900px; /* Ancho aumentado */
+    height: 700px; /* Alto aumentado */
+    
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    z-index: 10;
+    border: 1px solid #404040;
+  }
+
+  .explorer-titlebar {
+    background: #353535;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #404040;
+    flex-shrink: 0;
+  }
+
+  .explorer-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .explorer-buttons span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .close-btn { 
+    background: #ff5f56;
+    &:hover { transform: scale(1.1); }
+  }
+  .minimize-btn { 
+    background: #ffbd2e;
+    &:hover { transform: scale(1.1); }
+  }
+  .maximize-btn { 
+    background: #27ca3f;
+    &:hover { transform: scale(1.1); }
+  }
+
+  .explorer-path {
+    flex: 1;
+    background: #404040;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-family: 'Ubuntu Mono', monospace;
+    border: 1px solid #555;
+    display: flex;
+    align-items: center;
+  }
+
+  .view-controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .view-btn {
+    background: #404040;
+    border: none;
+    color: #b0b0b0;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 1.2rem;
+  }
+
+  .view-btn:hover {
+    background: #4a4a4a;
+    color: #fff;
+  }
+
+  .view-btn.active {
+    background: #505050;
+    color: #729fcf;
+    box-shadow: inset 0 0 0 2px #729fcf;
+  }
+
+  .explorer-toolbar {
+    background: #3a3a3a;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #404040;
+    flex-shrink: 0;
+  }
+
+  .toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .toolbar-btn {
+    background: #4a4a4a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 1.1rem;
+  }
+
+  .toolbar-btn:hover {
+    background: #555;
+    border-color: #666;
+    color: #fff;
+  }
+
+  .project-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(114, 159, 207, 0.2);
+    border-radius: 8px;
+    color: #94c1ff;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .search-box {
+    flex: 1;
+    max-width: 400px;
+    background: #404040;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #888;
+    height: 42px;
+  }
+
+  .search-box input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+    background: transparent;
+    color: #e0e0e0;
+    font-family: 'Ubuntu', sans-serif;
+    height: 100%;
+  }
+
+  .search-box input::placeholder {
+    color: #888;
+  }
+
+  .explorer-content {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .file-item {
+    background: #3a3a3a;
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    gap: 25px;
+    /* ELIMINADO: min-height: 320px; */
+    /* NUEVO: altura dinámica y no se sale del contenedor */
+    min-height: auto;
+    height: auto;
+    overflow: visible; /* Asegura que todo el contenido sea visible */
+    position: relative; /* Para contener elementos hijos absolutamente posicionados */
+  }
+
+  .file-item:hover {
+    background: #404040;
+    border-color: #729fcf;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  .file-icon {
+    flex-shrink: 0;
+    width: 80px; /* Más grande */
+    height: 80px; /* Más grande */
+    background: linear-gradient(135deg, #2d2d2d, #3a3a3a);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #444;
+    font-size: 2.5rem;
+    color: #729fcf;
+  }
+
+  .file-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* NUEVO: Permite que el contenido crezca pero mantiene las acciones abajo */
+    min-height: 0;
+  }
+
+  .file-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+  }
+
+  .file-title {
+    margin: 0;
+    color: #fff;
+    font-size: 1.5rem; /* Más grande */
+    font-weight: 700;
+    font-family: 'Ubuntu', sans-serif;
+    line-height: 1.3;
+  }
+
+  .file-role {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(233, 84, 32, 0.15);
+    color: #ffa07a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .file-description {
+    color: #b0b0b0;
+    font-size: 1rem; /* Más grande */
+    line-height: 1.6;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+  }
+
+  .technologies-section, .achievements-section {
+    margin-top: 10px;
+  }
+
+  .technologies-section h4, .achievements-section h4 {
+    color: #729fcf;
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+  }
+
+  .technologies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .tech-tag {
+    background: rgba(114, 159, 207, 0.2);
+    color: #94c1ff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-family: 'Ubuntu Mono', monospace;
+    border: 1px solid rgba(114, 159, 207, 0.3);
+    transition: all 0.2s;
+  }
+
+  .tech-tag:hover {
+    background: rgba(114, 159, 207, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .achievements-list {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-left: 25px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .achievements-list li {
+    position: relative;
+  }
+
+  .achievements-list li:before {
+    content: "•";
+    color: #729fcf;
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+  }
+
+  .more-items {
+    color: #888;
+    font-style: italic;
+  }
+
+  .file-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; 
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    
+  }
+
+  .github-btn {
+    background: #333;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .github-btn:hover {
+    background: #24292e;
+    border-color: #181717;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .file-stats {
+    display: flex;
+    gap: 20px;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .explorer-statusbar {
+    background: #353535;
+    padding: 12px 25px;
+    border-top: 1px solid #404040;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    font-family: 'Ubuntu Mono', monospace;
+    flex-shrink: 0;
+  }
+
+  .status-left, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .selected-count, .total-size, .view-mode, .sort-order {
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  /* Scrollbar personalizado */
+  .explorer-content::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .explorer-content::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 8px;
+  }
+
+  .explorer-content::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 8px;
+    border: 3px solid #2d2d2d;
+  }
+
+  .explorer-content::-webkit-scrollbar-thumb:hover {
+    background: #666;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .file-explorer {
+      width: 800px;
+      height: 700px;
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .file-explorer {
+      width: 700px;
+      height: 650px;
+    }
+    
+    .file-item {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .file-icon {
+      align-self: flex-start;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .file-explorer {
+      width: 90vw;
+      height: 80vh;
+      right: 5vw;
+      bottom: 5vh;
+      position: relative;
+      margin: 20px auto;
+    }
+    
+    .explorer-toolbar {
+      flex-direction: column;
+      gap: 15px;
+      align-items: stretch;
+    }
+    
+    .search-box {
+      max-width: 100%;
+    }
+    
+    .file-header {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    
+    .file-actions {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .file-explorer {
+      width: 95vw;
+      height: 85vh;
+    }
+    
+    .explorer-content {
+      padding: 15px;
+    }
+    
+    .file-item {
+      padding: 20px;
+    }
+    
+    .file-title {
+      font-size: 1.3rem;
+    }
+  }
+</style>

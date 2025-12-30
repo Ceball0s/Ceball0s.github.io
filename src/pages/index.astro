@@ -1,0 +1,48 @@
+---
+import Grub from '../components/boot/Grub.astro';
+import Kernel from '../components/boot/Kernel.astro';
+import BootLogs from '../components/boot/BootLogs.astro';
+---
+
+<div id="screen">
+  <div data-view="grub"><Grub /></div>
+  <div data-view="kernel"><Kernel /></div>
+  <div data-view="logs"><BootLogs /></div>
+</div>
+
+<script type="module" src="/src/core/boot.ts"></script>
+
+<style is:global>
+  :root {
+    --bg-grub: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/background-tela.jpg');
+    --bg-logs: #000000;
+    --bg-terminal: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/wallpaper.png');
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    overflow: hidden;
+  }
+
+  #screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--screen-bg, var(--bg-grub));
+    transition: background 300ms ease;
+    /* Fuente por defecto para todo el sistema */
+    font-family: 'Ubuntu Mono', 'JetBrains Mono', monospace;
+  }
+
+  [data-view] {
+    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

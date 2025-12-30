@@ -1,0 +1,238 @@
+---
+// pages/desktop.astro
+import TerminalWindow from '../components/TerminalWindow.astro';
+import FileExplorer from '../components/FileExplorer.astro';
+---
+
+<html lang="es" class="dark-theme">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Escritorio - Portfolio Ubuntu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ubuntu-orange: #E95420;
+      --ubuntu-purple: #77216F;
+      --ubuntu-dark: #2C001E;
+      --ubuntu-light: #F6F6F5;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .dark-theme {
+      background: linear-gradient(135deg, var(--ubuntu-dark) 0%, #1a1a1a 100%);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Escritorio Ubuntu -->
+  <div class="ubuntu-desktop">
+    
+    <!-- Barra superior Ubuntu -->
+    <div class="top-bar">
+      <div class="left-menu">
+        <span class="ubuntu-logo" style="font-size: 1.2rem;"></span>
+        <span class="menu-item">Aplicaciones</span>
+        <span class="menu-item">Lugares</span>
+        <span class="menu-item">Sistema</span>
+      </div>
+      <div class="system-tray">
+        <span class="tray-item"><i class="fas fa-wifi"></i></span>
+        <span class="tray-item"><i class="fas fa-volume-up"></i></span>
+        <span class="tray-item"><i class="fas fa-battery-half"></i></span>
+        <span class="time">14:30</span>
+        <span class="user-menu">
+          <i class="fas fa-user-circle"></i>
+          <span>miguel</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Iconos del escritorio -->
+    <div class="desktop-icons">
+      <div class="desktop-icon">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </div>
+      <div class="desktop-icon">
+        <i class="fas fa-folder"></i>
+        <span>Documentos</span>
+      </div>
+      <div class="desktop-icon">
+        <i class="fas fa-trash"></i>
+        <span>Papelera</span>
+      </div>
+      
+    </div>
+
+    <!-- Ventanas -->
+    <TerminalWindow />
+    <FileExplorer />
+
+  </div>
+
+  <style>
+    .ubuntu-desktop {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Ubuntu', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/wallpaper.png');
+    }
+
+    .top-bar {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+
+    .ubuntu-logo {
+      color: var(--ubuntu-orange);
+    }
+
+    .menu-item {
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .system-tray {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .tray-item {
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .time {
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .user-menu:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .desktop-icons {
+      position: absolute;
+      top: 80px;
+      left: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 1;
+    }
+
+    .desktop-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .desktop-icon:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .desktop-icon i {
+      font-size: 2rem;
+      color: var(--ubuntu-orange);
+      margin-bottom: 8px;
+    }
+
+    .desktop-icon span {
+      color: #fff;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .launcher {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 15px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 100;
+    }
+
+    .launcher-item {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+
+    .launcher-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .launcher-item.active {
+      background: rgba(233, 84, 32, 0.3);
+      color: var(--ubuntu-orange);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .desktop-icons {
+        top: 20px;
+        left: 20px;
+        flex-direction: row;
+        gap: 15px;
+      }
+      
+      .launcher {
+        display: none;
+      }
+    }
+  </style>
+</body>
+</html>
