@@ -22,98 +22,40 @@ function getProjectIcon(technologies: string[]): string {
 }
 
 // Cargar proyectos desde JSON o usar datos por defecto
-// Cargar proyectos desde JSON
-let projects: Array<any> = [];
-
-try {
-  // En Astro, para cargar archivos JSON desde public/, debemos usar fetch
-  // o poner el archivo en src/ y usar import. Usemos fetch:
-  const response = await fetch('/data/projects.json');
-  if (response.ok) {
-    projects = await response.json();
-  } else {
-    throw new Error('No se pudo cargar el archivo JSON');
+async function loadProjects() {
+  try {
+    // Opción 1: Intentar import desde public/ (funciona en dev y build)
+    const projectsData = await import('../../public/data/projects.json');
+    return projectsData.default || projectsData;
+  } catch (importError) {
+    console.log('Import falló, intentando fetch...');
+    
+    try {
+      // Opción 2: Usar fetch con URL base completa en desarrollo
+      let url = '/data/projects.json';
+      
+      // En desarrollo, construir URL completa
+      if (import.meta.env.DEV) {
+        url = `${window.location.origin}/data/projects.json`;
+      }
+      
+      const response = await fetch(url);
+      if (response.ok) {
+        return await response.json();
+      }
+    } catch (fetchError) {
+      console.log('Fetch también falló, usando datos por defecto');
+    }
   }
-} catch (error) {
-  console.error('Error loading projects.json:', error);
   
   // Si falla fetch, intentar cargar con import (para desarrollo)
-  try {
-    const projectsData = await import('../../public/data/projects.json');
-    projects = projectsData.default || projectsData;
-  } catch (importError) {
-    console.error('También falló import:', importError);
-    
-    // Datos de respaldo usando tu estructura exacta
-    projects = [
-      {
-        title: 'WikiFut',
-        role: 'Desarrollador Full Stack',
-        description: 'Aplicación móvil para consultar partidos, equipos y jugadores de fútbol en tiempo real.',
-        technologies: ['Kotlin', 'Jetpack Compose', 'Firebase', 'API-Football'],
-        achievements: [
-          'Implementación de buscadores para jugadores, equipos y ligas',
-          'Desarrollo del sistema de favoritos con sincronización en tiempo real',
-          'Resolución de conflictos entre ramas y conexión funcional entre módulos',
-          'Diseño modular con arquitectura MVVM y Jetpack Compose',
-          'Integración con API externa y autenticación Firebase'
-        ],
-        url: 'https://github.com/StivenHenao/WikiFut'
-      },
-      {
-        title: 'UnivalleMatriculaApp',
-        role: 'Líder de Desarrollo',
-        description: 'Aplicación de matrículas para la Universidad del Valle',
-        technologies: ['React Native', 'Figma', 'Excel Integration', 'React Navigation'],
-        achievements: [
-          'Arquitectura modular para mejor escalabilidad',
-          'Implementación de temas claro/oscuro',
-          'Gestor de materias con carga desde Excel'
-        ],
-        url: 'https://github.com/Ceball0s/UnivalleMatriculaApp'
-      },
-      {
-        title: 'SubastALL',
-        role: 'Líder de Desarrollo y Backend',
-        description: 'Plataforma de subastas en línea',
-        technologies: ['Spring Boot', 'JWT', 'PostgreSQL', 'React'],
-        achievements: [
-          'Backend completo con autenticación JWT',
-          'Documentación de 20+ endpoints REST',
-          'Optimización de consultas SQL'
-        ],
-        url: 'https://github.com/Ceball0s/SpringSubastAll'
-      },
-      {
-        title: 'IA Ajedrez de Alicia',
-        role: 'Desarrollador Principal',
-        description: 'Inteligencia artificial para jugar ajedrez',
-        technologies: ['Python', 'Algoritmo Minimax', 'Interfaz gráfica'],
-        achievements: [
-          'Implementación de algoritmo de decisión',
-          'Interfaz de usuario intuitiva',
-          'Pruebas exhaustivas de rendimiento'
-        ],
-        url: 'https://github.com/Ceball0s/IA_Ajedrez_de_Alicia'
-      },
-      {
-        title: 'DulceriaWeb',
-        role: 'Desarrollador Principal',
-        description: 'Sistema de gestión para dulcería',
-        technologies: ['Flask', 'PostgreSQL', 'Docker', 'Jinja2'],
-        achievements: [
-          'API RESTful con autenticación',
-          'Operaciones CRUD completas',
-          'Despliegue con Docker Compose'
-        ],
-        url: 'https://github.com/Ceball0s/DulceriaWeb-Python-Flask'
-      }
-    ];
-  }
+  return [];
 }
 
+let projects: Project[] = (await loadProjects()) as Project[];
+
 // Asegurarnos de que cada proyecto tenga un ID para las keys de React
-projects = projects.map((project, index) => ({
+projects = projects.map((project: Project, index) => ({
   ...project,
   id: project.id || `project-${index + 1}`
 }));
@@ -190,7 +132,12 @@ projects = projects.map((project, index) => ({
       }
       
       return (
-        <div class="file-item" key={project.id} on:click={() => window.open(project.url, '_blank')}>
+        <div 
+          class="file-item" 
+          data-key={project.id || project.title}
+          onclick={`if(this.dataset.url) window.open(this.dataset.url, '_blank');`}
+          data-url={project.url}
+        >
           <!-- Icono del proyecto -->
           <div class="file-icon">
             <i class={iconClass}></i>
@@ -213,7 +160,7 @@ projects = projects.map((project, index) => ({
               <h4><i class="fas fa-code"></i> Tecnologías:</h4>
               <div class="technologies-list">
                 {project.technologies.map((tech, idx) => (
-                  <span class="tech-tag" key={idx}>{tech}</span>
+                  <span class="tech-tag" data-tech-index={idx}>{tech}</span>
                 ))}
               </div>
             </div>
@@ -224,7 +171,7 @@ projects = projects.map((project, index) => ({
                 <h4><i class="fas fa-trophy"></i> Logros:</h4>
                 <ul class="achievements-list">
                   {project.achievements.slice(0, 5).map((achievement, idx) => (
-                    <li key={idx}>{achievement}</li>
+                    <li data-achievement-index={idx}>{achievement}</li>
                   ))}
                   {project.achievements.length > 5 && (
                     <li class="more-items">+{project.achievements.length - 3} más...</li>
@@ -238,7 +185,7 @@ projects = projects.map((project, index) => ({
               <a 
                 href={project.url} 
                 class="github-btn"
-                onClick={(e) => e.stopPropagation()}
+                onclick="event.stopPropagation()"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -731,53 +678,122 @@ projects = projects.map((project, index) => ({
 
   @media (max-width: 768px) {
     .file-explorer {
-      width: 90vw;
-      height: 80vh;
-      right: 5vw;
-      bottom: 5vh;
-      position: relative;
-      margin: 20px auto;
-    }
-    
-    .explorer-toolbar {
-      flex-direction: column;
-      gap: 15px;
-      align-items: stretch;
-    }
-    
-    .search-box {
-      max-width: 100%;
-    }
-    
-    .file-header {
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-start;
-    }
-    
-    .file-actions {
-      flex-direction: column;
-      gap: 15px;
-      align-items: flex-start;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .file-explorer {
-      width: 95vw;
-      height: 85vh;
+      /* Cambios principales para Android/móviles */
+      position: fixed !important;
+      width: calc(100vw - 20px) !important;
+      height: 45vh !important; /* Ocupa el 45% del viewport */
+      max-height: 45vh !important;
+      min-height: auto !important;
+      
+      /* Posicionamiento en la parte inferior */
+      bottom: 10px !important;
+      left: 10px !important;
+      right: 10px !important;
+      top: auto !important;
+      
+      margin: 0 auto;
+      border-radius: 12px;
+      z-index: 1000;
     }
     
     .explorer-content {
-      padding: 15px;
+      /* Asegurar que el contenido sea scrollable */
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      gap: 16px;
+      min-height: 0; /* Importante para flex */
     }
-    
-    .file-item {
-      padding: 20px;
+    .explorer-titlebar {
+      padding: 10px;
+      gap: 10px;
     }
-    
+
+    .explorer-path {
+      flex: 0 1 auto; /* Se estira menos, solo lo necesario */
+      padding: 5px 10px;
+      font-size: 0.85rem;
+    }
+    .explorer-toolbar{
+      display: none;
+    }
+    .file-header {
+      display: flex;
+      flex-direction: column; 
+      align-items: stretch; 
+      gap: 10px; 
+      
+      margin-bottom: 5px;
+    }
     .file-title {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      max-width: 85%; /* Ocupa menos horizontalmente */
+      line-height: 1.2;
+    }
+    .explorer-statusbar {
+      padding: 10px;
+      flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+      justify-content: center;
+      gap: 8px;
+      height: auto;
+    }
+    .status-left, .status-right {
+      gap: 5px;
+      justify-content: space-between;
+      width: 100%; /* Forzamos a que se organicen en bloques */
+    }
+
+    .selected-count, .total-size, .sort-order, .view-mode {
+      font-size: 0.75rem; /* Texto más pequeño para que quepa todo */
+      padding: 2px 6px;
+      white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+    }
+    .technologies-section, .achievements-section {
+      margin-top: 5px; /* Menos espacio arriba de las secciones */
+    }
+
+    .file-actions {
+      padding-top: 12px; /* Reducido de 20px */
+      margin-top: 15px;
+      gap: 10px;
+    }
+
+    .github-btn {
+      padding: 8px 12px; /* Mucho más compacto */
+      font-size: 0.9rem;
+    }
+
+    .github-btn span {
+      display: none; /* Oculta "Ver en GitHub" completo */
+    }
+    
+    .github-btn::after {
+      content: "GitHub"; /* Solo muestra la palabra clave */
+    }
+
+    .file-stats {
+      flex-direction: column; /* Apila los stats para que no empujen el botón */
+      gap: 4px;
+      font-size: 0.8rem;
+    }
+
+    .stat-item {
+      white-space: nowrap;
+    }
+
+  }
+
+
+  @media (max-width: 480px) {
+    .file-explorer {
+      width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+
+    .explorer-content {
+      padding: 16px;
+      gap: 16px;
     }
   }
 </style>

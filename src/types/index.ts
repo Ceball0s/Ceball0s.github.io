@@ -19,13 +19,16 @@ export interface SkillCategory {
   skills: string[];
 }
 
+// types/index.ts
 export interface Project {
-  id: string;
-  name: string;
+  title: string;
+  role: string;
   description: string;
   technologies: string[];
-  date: string;
-  url?: string;
-  github?: string;
-  icon?: string;
+  achievements: string[]; // En tu JSON siempre existe como array
+  url?: string; // Hacer opcional si no todos tienen
+  github?: string; // Agregar si algunos proyectos lo tienen
+  icon?: string; // Para futuros usos
+  date?: string; // Para futuros usos
+  id?: string; // Para futuros usos
 }

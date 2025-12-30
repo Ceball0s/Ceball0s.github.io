@@ -16,7 +16,8 @@
       "name": "Correo electrónico",
       "url": "mailto:miguel.yate@correounivalle.edu.co",
       "iconClass": "fas fa-envelope",
-      "color": "#EA4335"
+      "color": "#EA4335",
+      "target": "_blank"
     }
   ],
   "fullTexts": {
@@ -33,11 +34,11 @@
     },
     {
       "name": "Frontend",
-      "skills": ["HTML", "CSS", "React", "Angular", "Figma"]
+      "skills": ["HTML", "CSS", "React", "Angular", "Astro", "Figma"]
     },
     {
       "name": "Backend",
-      "skills": ["Node.js", "Express", "Flask", "Spring Boot", "APIs RESTful"]
+      "skills": ["Node.js", "Nextjs", "Express", "Flask", "Spring Boot", "APIs RESTful"]
     },
     {
       "name": "Datos",

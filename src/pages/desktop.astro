@@ -6,6 +6,11 @@ import FileExplorer from '../components/FileExplorer.astro';
 
 <html lang="es" class="dark-theme">
 <head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <title>Escritorio - Portfolio Ubuntu</title>
@@ -31,6 +36,69 @@ import FileExplorer from '../components/FileExplorer.astro';
     }
   </style>
 </head>
+<script>
+  // Función para actualizar el reloj
+  function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    
+    const clockElement = document.querySelector('.time');
+    if (clockElement) {
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+  }
+
+  // Actualizar el reloj inmediatamente y cada minuto
+  document.addEventListener('DOMContentLoaded', function() {
+    updateClock(); // Primera actualización
+    setInterval(updateClock, 60000); // Actualizar cada minuto
+  });
+
+  window.showNotification = function ({ 
+    title, 
+    message, 
+    icon = "fa-info-circle", 
+    color = "#E95420",
+    duration = 3000 
+  }) {
+    const container = document.getElementById("notifications");
+    if (!container) return;
+
+    const notif = document.createElement("div");
+    notif.className = "notification";
+    notif.style.setProperty("--accent", color);
+
+    notif.innerHTML = `
+      <i class="fas ${icon}"></i>
+      <div class="content">
+        <div class="title">${title}</div>
+        <div class="message">${message}</div>
+      </div>
+    `;
+
+    container.appendChild(notif);
+
+    setTimeout(() => {
+      notif.style.opacity = "0";
+      notif.style.transform = "translateX(20px)";
+      setTimeout(() => notif.remove(), 300);
+    }, duration);
+  };
+
+  if (Notification.permission === 'granted') {
+    new Notification('Title', { body: 'Hello' });
+  } else {
+    Notification.requestPermission().then(p => {
+      if (p === 'granted') new Notification('Title', { body: 'Hello' });
+    });
+  }
+
+  navigator.serviceWorker.getRegistration().then(reg => {
+    reg?.showNotification('Title', { body: 'Hello' });
+  });
+</script>
+
 <body>
   <!-- Escritorio Ubuntu -->
   <div class="ubuntu-desktop">
@@ -81,10 +149,13 @@ import FileExplorer from '../components/FileExplorer.astro';
   <style>
     .ubuntu-desktop {
       height: 100vh;
+      width: 100vw;
       position: relative;
       overflow: hidden;
       font-family: 'Ubuntu', sans-serif;
       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/wallpaper.png');
+      background-size: cover;
+
     }
 
     .top-bar {
@@ -222,17 +293,113 @@ import FileExplorer from '../components/FileExplorer.astro';
 
     /* Responsive */
     @media (max-width: 768px) {
-      .desktop-icons {
-        top: 20px;
-        left: 20px;
-        flex-direction: row;
-        gap: 15px;
+
+      .top-bar {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        justify-content: flex-end; 
+
+      }
+
+      .left-menu {
+        display: none; /* GNOME también lo hace */
+      }
+
+      .ubuntu-desktop {
+        /* CONFIGURACIÓN BÁSICA */
+        display: block !important;        /* NO FLEX, SINO BLOQUE NORMAL */
+        min-height: 100vh !important;
+        overflow-y: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        
+        /* FONDO VISIBLE */
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                    url('/images/wallpaper.png') !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
+        
+      }
+
+      /* Terminal como elemento normal en el flujo */
+       /* TERMINAL - PRIMERO */
+      .terminal-window {
+        margin: 40px auto 10px auto !important;  /* MARGEN PARA TOP-BAR Y FILE EXPLORER */
+        display: block !important;
       }
       
-      .launcher {
-        display: none;
+      .file-explorer {
+        position: fixed !important;
+        width: calc(100vw - 20px) !important;
+        height: 45vh !important;
+        max-height: 45vh !important;
+        bottom: 10px !important;
+        left: 10px !important;
+        right: 10px !important;
+        top: auto !important;
+        margin: 0 auto !important;
+        z-index: 1000;
+      }
+    }
+    /* GNOME-like notifications */
+    #notifications {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .notification {
+      background: rgba(20, 20, 20, 0.98);
+      color: #fff;
+      min-width: 280px;
+      max-width: 340px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      animation: slideIn 0.25s ease-out;
+      border-left: 4px solid var(--accent, #E95420);
+    }
+
+    .notification i {
+      font-size: 1.3rem;
+      color: var(--accent, #E95420);
+      margin-top: 2px;
+    }
+
+    .notification .content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .notification .title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .notification .message {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
   </style>
+  <div id="notifications"></div>
 </body>
 </html>

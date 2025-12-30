@@ -1,5 +1,4 @@
 import { renderBootLogs } from './logs';
-import { renderNeofetch } from './neofetch';
 //import { renderTerminal } from './terminal';
 import { setView, setTarget, clear, setBackground } from './screen';
 import { wait } from './timing';
@@ -17,16 +16,23 @@ export async function boot() {
   setView('logs');
   setTarget('bootlogs');
   await renderBootLogs();
-  await wait(500);
+  await wait(400);
   clear();
 
   setBackground('var(--bg-terminal)');
-  setView('neofetch');
-  await renderNeofetch();
-
-  await wait(600);
+  await wait(200);
   setView('terminal');
-  //renderTerminal();
+
+  await wait(200); // Esperar 1.5 segundos en la terminal
+  redirectToDesktop();
+
+
+}
+
+function redirectToDesktop() {
+  setTimeout(() => {
+    window.location.href = '/desktop';
+  }, 500);
 }
 
 boot();
