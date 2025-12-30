@@ -1,6 +1,6 @@
 // core/timing.ts
-export const wait = (ms: number): Promise<void> =>
-  new Promise(resolve => setTimeout(resolve, ms));
+export const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 
 export function randomDelay(base = 20, variance = 40) {
   let delay = base + Math.random() * variance;

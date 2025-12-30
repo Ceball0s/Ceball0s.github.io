@@ -1,6 +1,6 @@
 // core/logs.ts
-import { setTarget, clear, write } from './screen';
-import { wait, randomDelay } from './timing';
+import { setTarget, clear, write } from './screen.js';
+import { wait, randomDelay } from './timing.js';
 
 const logs = [
   '[ OK ] Started Power Management Service – Power Management Service',
@@ -45,7 +45,7 @@ const logs = [
 ];
 
 
-function formatLog(line: string) {
+function formatLog(line) {
   // El regex captura el bloque de servicio y la descripción
   const match = line.match(/^\[\s*OK\s*\]\s*(.+?)\s*[–-]\s*(.+)$/);
 

@@ -1,9 +1,9 @@
 // core/screen.ts
-const screen = document.getElementById('screen') as HTMLElement;
+const screen = document.getElementById('screen');
 
-let target: HTMLElement | null = null;
+let target = null;
 
-export function setBackground(bg: string) {
+export function setBackground(bg) {
   // Cambiamos de .backgroundColor a .background para que acepte imágenes
   screen.style.background = bg; 
   
@@ -11,7 +11,7 @@ export function setBackground(bg: string) {
   screen.style.backgroundSize = "cover";
 }
 
-export function setTarget(id: string) {
+export function setTarget(id) {
   target = document.getElementById(id);
 }
 
@@ -21,24 +21,24 @@ export function clear() {
   target.innerHTML = ''; // Usa innerHTML para limpiar, no textContent
 }
 
-export function write(html: string) {
+export function write(html) {
   if (!target) return;
   target.insertAdjacentHTML('beforeend', html);
 }
 
-export function html(text: string) {
+export function html(text) {
   screen.innerHTML += text;
 }
 
-export function set(text: string) {
+export function set(text) {
   screen.innerHTML = text;
 }
 
-export function setView(name: string) {
+export function setView(name) {
   document.querySelectorAll('[data-view]').forEach(el => {
-    (el as HTMLElement).style.display = 'none';
+    el.style.display = 'none';
   });
 
-  const view = document.querySelector(`[data-view="${name}"]`) as HTMLElement;
+  const view = document.querySelector(`[data-view="${name}"]`);
   if (view) view.style.display = 'block';
 }
