@@ -20,10 +20,7 @@ export async function boot() {
   clear();
 
   setBackground('var(--bg-terminal)');
-  await wait(200);
   setView('terminal');
-
-  await wait(200); // Esperar 1.5 segundos en la terminal
   redirectToDesktop();
 
 
