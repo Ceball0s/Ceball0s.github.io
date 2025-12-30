@@ -59,41 +59,30 @@ import FileExplorer from '../components/FileExplorer.astro';
     color = "#E95420",
     duration = 3000 
   }) {
-    const container = document.getElementById("notifications");
-    if (!container) return;
+  const container = document.getElementById("notifications");
+  if (!container) return;
 
-    const notif = document.createElement("div");
-    notif.className = "notification";
-    notif.style.setProperty("--accent", color);
+  const notif = document.createElement("div");
+  notif.className = "notification";
+  notif.style.setProperty("--accent", color);
 
-    notif.innerHTML = `
-      <i class="fas ${icon}"></i>
-      <div class="content">
-        <div class="title">${title}</div>
-        <div class="message">${message}</div>
-      </div>
-    `;
+  notif.innerHTML = `
+    <i class="fas ${icon}"></i>
+    <div class="content">
+      <div class="title">${title}</div>
+      <div class="message">${message}</div>
+    </div>
+  `;
 
-    container.appendChild(notif);
+  container.appendChild(notif);
 
-    setTimeout(() => {
-      notif.style.opacity = "0";
-      notif.style.transform = "translateX(20px)";
-      setTimeout(() => notif.remove(), 300);
-    }, duration);
-  };
-
-  if (Notification.permission === 'granted') {
-    new Notification('Title', { body: 'Hello' });
-  } else {
-    Notification.requestPermission().then(p => {
-      if (p === 'granted') new Notification('Title', { body: 'Hello' });
-    });
-  }
-
-  navigator.serviceWorker.getRegistration().then(reg => {
-    reg?.showNotification('Title', { body: 'Hello' });
-  });
+  // Auto-eliminar después de 'duration'
+  setTimeout(() => {
+    notif.style.opacity = "0";
+    notif.style.transform = "translateX(20px)";
+    setTimeout(() => notif.remove(), 300);
+  }, duration);
+};
 </script>
 
 <body>
