@@ -14,22 +14,6 @@
     "url": "https://github.com/StivenHenao/WikiFut"
   },
   {
-    "title": "Trotuman And More+ - Minecraft Mod",
-    "role": "Desarrollador Java & Game Developer",
-    "description": "Recreación y modernización de un mod clásico de Minecraft, actualizando 12 años de desarrollo a versiones modernas del juego con nuevas características.",
-    "technologies": ["Java", "Gradle", "Minecraft Forge API", "Blockbench", "JSON", "Git"],
-    "achievements": [
-      "Modelado y animación 3D de bloques y entidades personalizadas con Blockbench",
-      "Implementación de generación de terrenos y biomas personalizados",
-      "Creación de sistema de NPCs con IA personalizada y mecánicas de intercambio",
-      "Desarrollo de sistema de exploración guiada mediante mapas y recompensas progresivas",
-      "Gestión de comunidad y publicación en plataforma oficial (CurseForge)",
-      "Diseño e implementación de 7 nuevas estructuras generadas proceduralmente"
-      
-    ],
-    "url": "https://www.curseforge.com/minecraft/mc-mods/trotuman-and-more"
-  },
-  {
     "title": "UnivalleMatriculaApp",
     "role": "Líder de Desarrollo",
     "description": "Aplicación de matrículas para la Universidad del Valle",
@@ -42,10 +26,25 @@
     "url": "https://github.com/Ceball0s/UnivalleMatriculaApp"
   },
   {
+  "title": "Java Minecraft Modding",
+  "role": "Desarrollador Java & Game Developer",
+  "description": "Mod de Minecraft desarrollado desde cero en Java que expande sustancialmente el juego original. Destaca por la implementación de sistemas complejos de Inteligencia Artificial, manipulación de algoritmos a nivel de comandos y modelado 3D avanzado.",
+  "technologies": ["Java", "Gradle", "Minecraft Fabric API", "Blockbench", "JSON", "Git"],
+  "achievements": [
+    "Casi 400 descargas en plataformas oficiales (CurseForge)",
+    "Desarrollo de IA personalizada: Implementación de algoritmos de Pathfinding (ReturnToHome) altamente optimizados y reconocimiento dinámico de facciones (TeamColors) en entidades.",
+    "Programación de comandos avanzados (Brigadier API), incluyendo lógicas de manipulación volumétrica 3D para generación de bloques y parseo dinámico de datos.",
+    "Diseño de mecánicas complejas orientadas a estados, como mesas de alquimia con sistemas de recarga de energía y transmutación lógica de ítems en NBT.",
+    "Modelado, texturizado y animación 3D de entidades y bloques interactivos utilizando Blockbench.",
+    "Implementación de generación de terrenos, biomas y estructuras personalizadas generadas de manera procedural."
+  ],
+  "url": "https://www.curseforge.com/minecraft/mc-mods/trotuman-and-more"
+},
+  {
     "title": "SubastALL",
     "role": "Líder de Desarrollo y Backend",
     "description": "Plataforma de subastas en línea",
-    "technologies": ["Spring Boot", "JWT", "PostgreSQL", "React"],
+    "technologies": ["Java", "TypeScript", "Spring Boot", "JWT", "PostgreSQL", "React"],
     "achievements": [
       "Backend completo con autenticación JWT",
       "Documentación de 20+ endpoints REST",
@@ -69,7 +68,7 @@
     "title": "DulceriaWeb",
     "role": "Desarrollador Principal",
     "description": "Sistema de gestión para dulcería",
-    "technologies": ["Flask", "PostgreSQL", "Docker", "Jinja2"],
+    "technologies": ["Python", "Flask", "PostgreSQL", "Docker", "Jinja2"],
     "achievements": [
       "API RESTful con autenticación",
       "Operaciones CRUD completas",

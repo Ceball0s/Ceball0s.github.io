@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
 
 export default defineConfig({
@@ -7,6 +8,7 @@ export default defineConfig({
   integrations: [],
   // Configuración de favicon (opcional)
   vite: {
+    plugins: [tailwindcss()],
     build: {
       rollupOptions: {
         output: {

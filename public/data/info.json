@@ -10,7 +10,7 @@
       "name": "GitHub",
       "url": "https://github.com/Ceball0s",
       "iconClass": "fab fa-github",
-      "color": "#181717"
+      "color": "#ffffff"
     },
     {
       "name": "Correo electrónico",
@@ -30,27 +30,31 @@
   "skillCategories": [
     {
       "name": "Lenguajes",
-      "skills": ["C++", "Python", "Java", "JavaScript", "TypeScript", "Kotlin", "Scala", "SQL"]
+      "skills": ["C++", "Python", "Java", "JavaScript", "TypeScript", "Kotlin", "Scala", "SQL", "PL/pgSQL"]
     },
     {
       "name": "Frontend",
-      "skills": ["HTML", "CSS", "React", "Angular", "Astro", "Figma"]
+      "skills": ["HTML", "CSS", "React", "Angular", "Astro", "TailwindCSS"]
     },
     {
-      "name": "Backend",
-      "skills": ["Node.js", "Nextjs", "Express", "Flask", "Spring Boot", "APIs RESTful"]
+      "name": "Backend & Arquitectura",
+      "skills": ["Node.js", "Spring Boot", "Microservicios", "API Gateway", "Netflix Eureka", "JWT", "Nextjs", "Express", "Flask"]
     },
     {
-      "name": "Datos",
-      "skills": ["MySQL", "PostgreSQL", "MongoDB", "Análisis de datos"]
+      "name": "IA & Ciencia de Datos",
+      "skills": ["IA Generativa", "Prompt Engineering", "Jupyter Notebooks", "Análisis de Datos"]
     },
     {
-      "name": "DevOps",
-      "skills": ["Docker", "AWS", "Git", "Linux", "CI/CD"]
+      "name": "Modelado & Diseño",
+      "skills": ["Figma", "Blockbench", "Modelado 3D", "UI/UX Design"]
     },
     {
-      "name": "Móvil",
-      "skills": ["Android Studio", "React Native", "Kotlin"]
+      "name": "DevOps & Herramientas",
+      "skills": ["Docker", "AWS", "Git", "Linux", "CI/CD", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "name": "Móvil & Otros",
+      "skills": ["Android Studio", "React Native", "Kotlin", "Minecraft Fabric API"]
     }
   ]
 }

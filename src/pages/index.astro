@@ -1,146 +1,239 @@
 ---
-import Grub from '../components/boot/Grub.astro';
-import Kernel from '../components/boot/Kernel.astro';
-import BootLogs from '../components/boot/BootLogs.astro';
+import "../styles/global.css";
 ---
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<link rel="icon" type="image/x-icon" href="favicon.svg">
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miguel Angel Ceballos | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
+<body class="bg-neutral-950 text-neutral-100 selection:bg-blue-500/30">
+  <!-- Fondo dinámico -->
+  <div class="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
+  <div class="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(circle_farthest-side_at_0%_0%,#1e3a8a,transparent_100%)] opacity-20"></div>
 
-<div id="screen">
-  <div data-view="grub"><Grub /></div>
-  <div data-view="kernel"><Kernel /></div>
-  <div data-view="logs"><BootLogs /></div>
-</div>
-
-<a href="/desktop" class="skip-boot-btn">
-  <i class="fas fa-forward"></i> Saltar arranque
-</a>
-
-
-
-<style is:global>
-  :root {
-    --bg-grub: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/ubuntu.png');
-    --bg-logs: #000000;
-    --bg-terminal: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/wallpaper.png');
-  }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    overflow: hidden;
-  }
-
-  #screen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--screen-bg, var(--bg-grub));
-    transition: background 300ms ease;
-    /* Fuente por defecto para todo el sistema */
-    font-family: 'Ubuntu Mono', 'JetBrains Mono', monospace;
-  }
-
-  [data-view] {
-    display: none;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-  /* Botón para saltar animación de arranque */
-  .skip-boot-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    
-    /* Estilo transparente con letras blancas */
-    background: rgba(0, 0, 0, 0.3);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    
-    /* Texto y espaciado */
-    padding: 12px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 0.9rem;
-    
-    /* Transición suave */
-    transition: all 0.3s ease;
-    
-    /* Flex para alinear icono y texto */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    
-    /* Efecto de desenfoque de fondo */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
-    /* Sombra sutil */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Efecto hover */
-  .skip-boot-btn:hover {
-    background: rgba(233, 84, 32, 0.3); /* Naranja Ubuntu */
-    border-color: rgba(233, 84, 32, 0.5);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  }
-
-  /* Efecto activo */
-  .skip-boot-btn:active {
-    transform: translateY(0);
-  }
-
-  /* Para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .skip-boot-btn {
-      bottom: 15px;
-      right: 15px;
-      padding: 10px 16px;
-      font-size: 0.85rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .skip-boot-btn {
-      bottom: 10px;
-      right: 10px;
-      padding: 8px 12px;
-      font-size: 0.8rem;
-    }
-    
-    /* Ocultar texto en móviles muy pequeños, solo mostrar icono */
-    @media (max-width: 360px) {
-      .skip-boot-btn span {
-        display: none;
-      }
+  <main class="min-h-screen px-6 py-10 md:px-8 md:py-14">
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-12">
       
-      .skip-boot-btn {
-        padding: 10px;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        justify-content: center;
-      }
+      <!-- Perfil Principal -->
+      <section class="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm transition-all hover:border-blue-500/50 md:col-span-8">
+        <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-600/10 blur-3xl transition-all group-hover:bg-blue-600/20"></div>
+        <p class="font-mono text-xs uppercase tracking-[0.3em] text-blue-400">Junior Full Stack Engineer</p>
+        <h1 id="name" class="mt-4 text-4xl font-bold tracking-tight text-white md:text-6xl">Tu Nombre</h1>
+        <p id="role" class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300">Cargando perfil...</p>
+        
+        <div class="mt-8 flex flex-wrap gap-3">
+          <div id="location-container" class="flex items-center gap-2 rounded-full border border-blue-900/50 bg-blue-950/30 px-4 py-2 font-mono text-xs text-blue-200">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="location">Ubicación</span>
+          </div>
+          <div class="flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/30 px-4 py-2 font-mono text-xs text-neutral-300">
+            <i class="fa-solid fa-code-branch"></i>
+            <span id="project-count">0 proyectos</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm md:col-span-4">
+        <h2 class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-400">
+          <i class="fa-solid fa-paper-plane text-blue-400"></i>
+          Contacto
+        </h2>
+        <div id="social-links" class="mt-6 space-y-4"></div>
+      </section>
+
+      <!-- Habilidades -->
+      <section class="md:col-span-12">
+        <div class="mb-8 flex items-center justify-between">
+          <h2 class="flex items-center gap-3 text-2xl font-bold text-white">
+            <i class="fa-solid fa-screwdriver-wrench text-blue-500"></i>
+            Skills & Tecnologías
+          </h2>
+          <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div>
+        </div>
+        <div id="skills-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+      </section>
+
+      <!-- Proyectos -->
+      <section class="md:col-span-12">
+        <div class="mb-8 flex items-center justify-between">
+          <h2 class="flex items-center gap-3 text-2xl font-bold text-white">
+            <i class="fa-solid fa-laptop-code text-blue-500"></i>
+            Proyectos Destacados
+          </h2>
+          <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div>
+        </div>
+        <div id="projects-grid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="mt-20 pb-10 text-center">
+    <p class="font-mono text-sm text-neutral-500">
+      &copy; {new Date().getFullYear()} Miguel Angel Ceballos
+    </p>
+  </footer>
+
+  <script>
+    const socialLinks = document.getElementById("social-links");
+    const projectsGrid = document.getElementById("projects-grid");
+    const skillsGrid = document.getElementById("skills-grid");
+
+    const TECH_ICONS = {
+      "React": "fa-brands fa-react text-[#61DAFB]",
+      "React Native": "fa-brands fa-react text-[#61DAFB]",
+      "Node.js": "fa-brands fa-node-js text-[#339933]",
+      "Python": "fa-brands fa-python text-[#3776AB]",
+      "Flask": "fa-solid fa-flask text-[#000000] dark:text-white",
+      "Java": "fa-brands fa-java text-[#ED8B00]",
+      "JavaScript": "fa-brands fa-js text-[#F7DF1E]",
+      "TypeScript": "fa-solid fa-code text-[#3178C6]",
+      "Docker": "fa-brands fa-docker text-[#2496ED]",
+      "AWS": "fa-brands fa-aws text-[#FF9900]",
+      "Git": "fa-brands fa-git-alt text-[#F05032]",
+      "Angular": "fa-brands fa-angular text-[#DD0031]",
+      "Kotlin": "fa-brands fa-android text-[#7F52FF]",
+      "Jetpack Compose": "fa-solid fa-mobile-screen text-[#4285F4]",
+      "Android Studio": "fa-brands fa-android text-[#3DDC84]",
+      "Astro": "fa-solid fa-rocket text-[#FF5D01]",
+      "TailwindCSS": "fa-solid fa-wind text-[#06B6D4]",
+      "Nextjs": "fa-solid fa-n text-white",
+      "Spring Boot": "fa-solid fa-leaf text-[#6DB33F]",
+      "PostgreSQL": "fa-solid fa-database text-[#336791]",
+      "PL/pgSQL": "fa-solid fa-database text-[#336791]",
+      "Firebase": "fa-solid fa-fire text-[#FFCA28]",
+      "Figma": "fa-brands fa-figma text-[#F24E1E]",
+      "Blockbench": "fa-solid fa-cube text-[#38BDF8]",
+      "Modelado 3D": "fa-solid fa-cubes text-[#38BDF8]",
+      "Microservicios": "fa-solid fa-cubes-stacked text-[#729FCF]",
+      "Netflix Eureka": "fa-solid fa-magnifying-glass text-[#E50914]",
+      "API Gateway": "fa-solid fa-door-open text-[#FF9900]",
+      "IA Generativa": "fa-solid fa-brain text-[#10A37F]",
+      "Jupyter Notebooks": "fa-solid fa-book text-[#F37626]",
+      "Minecraft Fabric API": "fa-solid fa-hammer text-[#ED8B00]",
+      "Prompt Engineering": "fa-solid fa-terminal text-[#10A37F]"
+    };
+
+    function linkCard(link) {
+      return `
+        <a href="${link.url}" target="_blank" rel="noreferrer"
+           class="group flex items-center gap-4 rounded-xl border border-neutral-800 bg-neutral-950/50 px-5 py-4 text-sm text-neutral-300 transition-all hover:border-blue-500 hover:bg-blue-500/5 hover:text-white">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-lg transition-transform group-hover:scale-110" style="color: ${link.color}">
+            <i class="${link.iconClass}"></i>
+          </div>
+          <div class="flex-1">
+            <span class="block font-semibold">${link.name}</span>
+            <span class="text-xs text-neutral-500">Visitar perfil</span>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs text-neutral-600 transition-colors group-hover:text-blue-400"></i>
+        </a>`;
+    }
+
+    function projectCard(project) {
+      const achievements = project.achievements.slice(0, 2).map((item) => `<li class="flex items-start gap-2">
+        <i class="fa-solid fa-check text-blue-500 mt-1 text-[10px]"></i>
+        <span>${item}</span>
+      </li>`).join("");
       
-      .skip-boot-btn i {
-        margin-right: 0;
+      const technologies = project.technologies
+        .map((tech) => {
+          const icon = TECH_ICONS[tech] || "fa-solid fa-microchip text-neutral-400";
+          return `<span class="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900 px-3 py-1 font-mono text-[10px] text-neutral-300 hover:border-neutral-600 transition-colors">
+            <i class="${icon} text-xs"></i>
+            ${tech}
+          </span>`;
+        })
+        .join("");
+
+      // Obtener el icono del lenguaje predominante (el primero de la lista)
+      const mainTech = project.technologies[0];
+      const mainIcon = TECH_ICONS[mainTech] || "fa-solid fa-folder-open";
+
+      return `
+        <article class="group relative flex flex-col rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 transition-all hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10">
+          <a href="${project.url}" target="_blank" rel="noreferrer" class="absolute inset-0 z-10" aria-label="Ver proyecto ${project.title}"></a>
+          
+          <div class="relative z-0 flex flex-col h-full">
+            <div class="flex items-start justify-between">
+              <div class="rounded-lg bg-blue-500/10 p-3 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                <i class="${mainIcon} text-xl"></i>
+              </div>
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800/50 text-neutral-400 transition-all group-hover:bg-neutral-800 group-hover:text-white">
+                <i class="fa-brands fa-github text-lg"></i>
+              </div>
+            </div>
+            
+            <h3 class="mt-5 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">${project.title}</h3>
+            <p class="mt-2 font-mono text-[10px] uppercase tracking-wider text-blue-500/80">${project.role}</p>
+            <p class="mt-4 text-sm leading-relaxed text-neutral-400">${project.description}</p>
+            <ul class="mt-6 space-y-2 text-xs text-neutral-500">${achievements}</ul>
+            <div class="mt-auto pt-6 flex flex-wrap gap-2 relative z-20">${technologies}</div>
+          </div>
+        </article>`;
+    }
+
+    function skillCard(category) {
+      const skills = category.skills
+        .map((skill) => {
+          const icon = TECH_ICONS[skill] || "fa-solid fa-check text-neutral-600";
+          return `<div class="group/skill flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900/50 p-3 transition-all hover:border-neutral-600 hover:bg-neutral-800">
+            <i class="${icon} transition-transform group-hover/skill:scale-125"></i>
+            <span class="text-sm font-medium text-neutral-300 group-hover/skill:text-white">${skill}</span>
+          </div>`;
+        })
+        .join("");
+
+      const categoryIcons = {
+        "Lenguajes": "fa-solid fa-terminal",
+        "Frontend": "fa-solid fa-display",
+        "Backend": "fa-solid fa-server",
+        "Datos": "fa-solid fa-database",
+        "DevOps": "fa-solid fa-infinity",
+        "Móvil": "fa-solid fa-mobile-screen-button"
+      };
+      
+      const icon = categoryIcons[category.name] || "fa-solid fa-layer-group";
+
+      return `
+        <article class="rounded-2xl border border-neutral-800 bg-neutral-950/30 p-6 backdrop-blur-sm transition-all hover:bg-neutral-900/30">
+          <div class="mb-6 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
+              <i class="${icon} text-lg"></i>
+            </div>
+            <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-white">${category.name}</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-3">${skills}</div>
+        </article>`;
+    }
+
+    async function renderPortfolio() {
+      try {
+        const [projectsResponse, infoResponse] = await Promise.all([
+          fetch("/data/projects.json"),
+          fetch("/data/info.json")
+        ]);
+        const projects = await projectsResponse.json();
+        const info = await infoResponse.json();
+
+        document.getElementById("name").textContent = info.fullTexts.name;
+        document.getElementById("role").textContent = info.fullTexts.role;
+        document.getElementById("location").textContent = info.fullTexts.location;
+        document.getElementById("project-count").textContent = `${projects.length} proyectos`;
+
+        socialLinks.innerHTML = info.socialLinks.map(linkCard).join("");
+        projectsGrid.innerHTML = projects.map(projectCard).join("");
+        skillsGrid.innerHTML = info.skillCategories.map(skillCard).join("");
+      } catch (error) {
+        console.error("Error cargando el portfolio:", error);
       }
     }
-  }
-</style>
-<script type="module" src="/scripts/boot.js"></script>
+
+    renderPortfolio();
+  </script>
+</body>
+</html>
+
