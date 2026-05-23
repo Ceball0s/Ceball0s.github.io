@@ -1,0 +1,356 @@
+{
+  "es": {
+    "ui": {
+      "subtitle": "Junior Full Stack Engineer",
+      "contact": "Contacto",
+      "skills": "Skills & Tecnologías",
+      "projects": "Proyectos Destacados",
+      "visitProfile": "Visitar perfil",
+      "projectsCount": "proyectos",
+      "copyright": "© {year} Miguel Angel Ceballos"
+    },
+    "info": {
+      "socialLinks": [
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/miguel-angel-ceballos-914970284/",
+          "iconClass": "fab fa-linkedin",
+          "color": "#0A66C2"
+        },
+        {
+          "name": "GitHub",
+          "url": "https://github.com/Ceball0s",
+          "iconClass": "fab fa-github",
+          "color": "#ffffff"
+        },
+        {
+          "name": "Correo electrónico",
+          "url": "mailto:miguel.yate@correounivalle.edu.co",
+          "iconClass": "fas fa-envelope",
+          "color": "#EA4335",
+          "target": "_blank"
+        }
+      ],
+      "fullTexts": {
+        "title": "SOBRE MÍ",
+        "name": "Miguel Angel Ceballos",
+        "role": "Desarrollador Full Stack con experiencia en diseño y desarrollo de aplicaciones web, móviles y soluciones en la nube. Apasionado por aprender nuevas tecnologías y enfrentar desafíos técnicos. Especializado en arquitecturas limpias y escalables.",
+        "location": "Tuluá, Colombia",
+        "skills": []
+      },
+      "skillCategories": [
+        {
+          "name": "Lenguajes",
+          "skills": ["C++", "Python", "Java", "JavaScript", "TypeScript", "Kotlin", "Scala", "SQL", "PL/pgSQL", "C#", "Dart"]
+        },
+        {
+          "name": "Frontend",
+          "skills": ["HTML", "CSS", "React", "Angular", "Astro", "TailwindCSS"]
+        },
+        {
+          "name": "Backend & Arquitectura",
+          "skills": ["Node.js", "Spring Boot", "Microservicios", "API Gateway", "Netflix Eureka", "JWT", "Nextjs", "Express", "Flask", ".NET"]
+        },
+        {
+          "name": "IA & Ciencia de Datos",
+          "skills": ["IA Generativa", "Prompt Engineering", "Jupyter Notebooks", "Análisis de Datos"]
+        },
+        {
+          "name": "Modelado & Diseño",
+          "skills": ["Figma", "Blockbench", "Modelado 3D", "UI/UX Design"]
+        },
+        {
+          "name": "DevOps & Herramientas",
+          "skills": ["Docker", "AWS", "Git", "Linux", "CI/CD", "PostgreSQL", "MongoDB", "SQLite"]
+        },
+        {
+          "name": "Móvil & Otros",
+          "skills": ["Android Studio", "React Native", "Kotlin", "Flutter", "Minecraft Fabric API", "Minecraft Forge API"]
+        }
+      ]
+    },
+    "projects": [
+      {
+        "title": "DevRoute",
+        "role": "Desarrollador Full Stack",
+        "description": "Plataforma de logística y gestión de entregas con sistema de autenticación JWT, panel administrativo y seguimiento de órdenes. Backend en .NET con Entity Framework y app móvil multiplataforma en Flutter.",
+        "technologies": ["C#", ".NET", "Flutter", "Dart", "SQLite", "JWT"],
+        "achievements": [
+          "Backend RESTful con autenticación JWT y autorización basada en roles (Admin/Repartidor)",
+          "App móvil con panel de administración, registro de usuarios y gestión de órdenes",
+          "Arquitectura limpia con Entity Framework Core y SQLite"
+        ],
+        "url": "https://github.com/Ceball0s/DevRoute"
+      },
+      {
+        "title": "TaskPro",
+        "role": "Full Stack Developer",
+        "description": "Plataforma de gestión de tareas completa con Frontend en Angular y Backend robusto en Node.js, Prisma y PostgreSQL.",
+        "technologies": ["Angular", "Node.js", "TypeScript", "PostgreSQL", "Prisma", "Express", "TailwindCSS"],
+        "achievements": [
+          "Interfaz responsiva con componentes reutilizables y diseño moderno",
+          "API RESTful completa con autenticación y autorización JWT",
+          "Modelo de datos relacional con PostgreSQL para gestión de tareas y usuarios"
+        ],
+        "links": [
+          { "name": "Frontend", "url": "https://github.com/Alejma/TaskPro-Frontend" },
+          { "name": "Backend", "url": "https://github.com/Alejma/TaskPro-Backend" }
+        ]
+      },
+      {
+        "title": "WikiFut",
+        "role": "Desarrollador Full Stack",
+        "description": "Aplicación móvil para consultar partidos, equipos y jugadores de fútbol en tiempo real.",
+        "technologies": ["Kotlin", "Jetpack Compose", "Firebase", "API-Football"],
+        "achievements": [
+          "Implementación de buscadores para jugadores, equipos y ligas",
+          "Desarrollo del sistema de favoritos con sincronización en tiempo real",
+          "Resolución de conflictos entre ramas y conexión funcional entre módulos",
+          "Diseño modular con arquitectura MVVM y Jetpack Compose",
+          "Integración con API externa y autenticación Firebase"
+        ],
+        "url": "https://github.com/StivenHenao/WikiFut"
+      },
+      {
+        "title": "UnivalleMatriculaApp",
+        "role": "Líder de Desarrollo",
+        "description": "Aplicación de matrículas para la Universidad del Valle",
+        "technologies": ["React Native", "Figma", "Excel Integration", "React Navigation"],
+        "achievements": [
+          "Arquitectura modular para mejor escalabilidad",
+          "Implementación de temas claro/oscuro",
+          "Gestor de materias con carga desde Excel"
+        ],
+        "url": "https://github.com/Ceball0s/UnivalleMatriculaApp"
+      },
+      {
+        "title": "Java Minecraft Modding",
+        "role": "Desarrollador Java & Game Developer",
+        "description": "Mod de Minecraft desarrollado desde cero en Java que expande sustancialmente el juego original. Destaca por la implementación de sistemas complejos de Inteligencia Artificial, manipulación de algoritmos a nivel de comandos y modelado 3D avanzado.",
+        "technologies": ["Java", "Gradle", "Minecraft Fabric & Forge API", "Blockbench", "JSON", "Git"],
+        "achievements": [
+          "Más de 500 descargas en plataformas oficiales (CurseForge)",
+          "Desarrollo de IA personalizada: Implementación de algoritmos de Pathfinding altamente optimizados en entidades.",
+          "Programación de comandos avanzados (Brigadier API), incluyendo lógicas de manipulación volumétrica 3D para generación de bloques y parseo dinámico de datos.",
+          "Diseño de mecánicas complejas orientadas a estados, como mesas de alquimia con sistemas de recarga de energía y transmutación lógica de ítems.",
+          "Modelado, texturizado y animación 3D de entidades y bloques interactivos utilizando Blockbench.",
+          "Implementación de generación de terrenos, biomas y estructuras personalizadas generadas de manera procedural."
+        ],
+        "url": "https://www.curseforge.com/minecraft/mc-mods/trotuman-and-more"
+      },
+      {
+        "title": "SubastALL",
+        "role": "Líder de Desarrollo y Backend",
+        "description": "Plataforma de subastas en línea",
+        "technologies": ["Java", "TypeScript", "Spring Boot", "JWT", "PostgreSQL", "React"],
+        "achievements": [
+          "Backend completo con autenticación JWT",
+          "Documentación de 20+ endpoints REST",
+          "Optimización de consultas SQL"
+        ],
+        "url": "https://github.com/Ceball0s/SpringSubastAll"
+      },
+      {
+        "title": "IA Ajedrez de Alicia",
+        "role": "Desarrollador Principal",
+        "description": "Inteligencia artificial para jugar ajedrez",
+        "technologies": ["Python", "Algoritmo Minimax", "Interfaz gráfica"],
+        "achievements": [
+          "Implementación de algoritmo de decisión",
+          "Interfaz de usuario intuitiva",
+          "Pruebas exhaustivas de rendimiento"
+        ],
+        "url": "https://github.com/Ceball0s/IA_Ajedrez_de_Alicia"
+      },
+      {
+        "title": "DulceriaWeb",
+        "role": "Desarrollador Principal",
+        "description": "Sistema de gestión para dulcería",
+        "technologies": ["Python", "Flask", "PostgreSQL", "Docker", "Jinja2"],
+        "achievements": [
+          "API RESTful con autenticación",
+          "Operaciones CRUD completas",
+          "Despliegue con Docker Compose"
+        ],
+        "url": "https://github.com/Ceball0s/DulceriaWeb-Python-Flask"
+      }
+    ]
+  },
+  "en": {
+    "ui": {
+      "subtitle": "Junior Full Stack Engineer",
+      "contact": "Contact",
+      "skills": "Skills & Technologies",
+      "projects": "Featured Projects",
+      "visitProfile": "Visit profile",
+      "projectsCount": "projects",
+      "copyright": "© {year} Miguel Angel Ceballos"
+    },
+    "info": {
+      "socialLinks": [
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/miguel-angel-ceballos-914970284/",
+          "iconClass": "fab fa-linkedin",
+          "color": "#0A66C2"
+        },
+        {
+          "name": "GitHub",
+          "url": "https://github.com/Ceball0s",
+          "iconClass": "fab fa-github",
+          "color": "#ffffff"
+        },
+        {
+          "name": "Email",
+          "url": "mailto:miguel.yate@correounivalle.edu.co",
+          "iconClass": "fas fa-envelope",
+          "color": "#EA4335",
+          "target": "_blank"
+        }
+      ],
+      "fullTexts": {
+        "title": "ABOUT ME",
+        "name": "Miguel Angel Ceballos",
+        "role": "Full Stack Developer with experience in designing and developing web, mobile applications and cloud solutions. Passionate about learning new technologies and tackling technical challenges. Specialized in clean and scalable architectures.",
+        "location": "Tuluá, Colombia",
+        "skills": []
+      },
+      "skillCategories": [
+        {
+          "name": "Languages",
+          "skills": ["C++", "Python", "Java", "JavaScript", "TypeScript", "Kotlin", "Scala", "SQL", "PL/pgSQL", "C#", "Dart"]
+        },
+        {
+          "name": "Frontend",
+          "skills": ["HTML", "CSS", "React", "Angular", "Astro", "TailwindCSS"]
+        },
+        {
+          "name": "Backend & Architecture",
+          "skills": ["Node.js", "Spring Boot", "Microservices", "API Gateway", "Netflix Eureka", "JWT", "Nextjs", "Express", "Flask", ".NET"]
+        },
+        {
+          "name": "AI & Data Science",
+          "skills": ["Generative AI", "Prompt Engineering", "Jupyter Notebooks", "Data Analysis"]
+        },
+        {
+          "name": "Modeling & Design",
+          "skills": ["Figma", "Blockbench", "3D Modeling", "UI/UX Design"]
+        },
+        {
+          "name": "DevOps & Tools",
+          "skills": ["Docker", "AWS", "Git", "Linux", "CI/CD", "PostgreSQL", "MongoDB", "SQLite"]
+        },
+        {
+          "name": "Mobile & Others",
+          "skills": ["Android Studio", "React Native", "Kotlin", "Flutter", "Minecraft Fabric API", "Minecraft Forge API"]
+        }
+      ]
+    },
+    "projects": [
+      {
+        "title": "DevRoute",
+        "role": "Full Stack Developer",
+        "description": "Logistics and delivery management platform with JWT authentication, admin dashboard and order tracking. .NET backend with Entity Framework and cross-platform mobile app built with Flutter.",
+        "technologies": ["C#", ".NET", "Flutter", "Dart", "SQLite", "JWT"],
+        "achievements": [
+          "RESTful backend with JWT authentication and role-based authorization (Admin/Driver)",
+          "Mobile app with admin panel, user registration and order management",
+          "Clean architecture with Entity Framework Core and SQLite"
+        ],
+        "url": "https://github.com/Ceball0s/DevRoute"
+      },
+      {
+        "title": "TaskPro",
+        "role": "Full Stack Developer",
+        "description": "Complete task management platform with an Angular Frontend and a robust Backend using Node.js, Prisma, and PostgreSQL.",
+        "technologies": ["Angular", "Node.js", "TypeScript", "PostgreSQL", "Prisma", "Express", "TailwindCSS"],
+        "achievements": [
+          "Responsive interface with reusable components and modern design",
+          "Complete RESTful API with JWT authentication and authorization",
+          "Relational data model with PostgreSQL for task and user management"
+        ],
+        "links": [
+          { "name": "Frontend", "url": "https://github.com/Alejma/TaskPro-Frontend" },
+          { "name": "Backend", "url": "https://github.com/Alejma/TaskPro-Backend" }
+        ]
+      },
+      {
+        "title": "WikiFut",
+        "role": "Full Stack Developer",
+        "description": "Mobile application for querying matches, teams and football players in real time.",
+        "technologies": ["Kotlin", "Jetpack Compose", "Firebase", "API-Football"],
+        "achievements": [
+          "Implementation of search features for players, teams and leagues",
+          "Favorites system with real-time synchronization",
+          "Branch conflict resolution and functional connection between modules",
+          "Modular design with MVVM architecture and Jetpack Compose",
+          "External API integration and Firebase authentication"
+        ],
+        "url": "https://github.com/StivenHenao/WikiFut"
+      },
+      {
+        "title": "UnivalleMatriculaApp",
+        "role": "Development Lead",
+        "description": "Enrollment application for Universidad del Valle",
+        "technologies": ["React Native", "Figma", "Excel Integration", "React Navigation"],
+        "achievements": [
+          "Modular architecture for better scalability",
+          "Light/dark theme implementation",
+          "Course manager with Excel import"
+        ],
+        "url": "https://github.com/Ceball0s/UnivalleMatriculaApp"
+      },
+      {
+        "title": "Java Minecraft Modding",
+        "role": "Java & Game Developer",
+        "description": "Minecraft mod built from scratch in Java that substantially expands the original game. Highlights include complex AI systems, command-level algorithm manipulation and advanced 3D modeling.",
+        "technologies": ["Java", "Gradle", "Minecraft Fabric & Forge API", "Blockbench", "JSON", "Git"],
+        "achievements": [
+          "More than 500 downloads on official platforms (CurseForge)",
+          "Custom AI development: Implementation of highly optimized Pathfinding algorithms for entities.",
+          "Advanced command programming (Brigadier API), including 3D volumetric manipulation logic for block generation and dynamic data parsing.",
+          "Complex state-oriented mechanics design, such as alchemy tables with energy recharge systems and logical item transmutation.",
+          "3D modeling, texturing and animation of entities and interactive blocks using Blockbench.",
+          "Implementation of procedurally generated custom terrains, biomes and structures."
+        ],
+        "url": "https://www.curseforge.com/minecraft/mc-mods/trotuman-and-more"
+      },
+      {
+        "title": "SubastALL",
+        "role": "Development Lead & Backend",
+        "description": "Online auction platform",
+        "technologies": ["Java", "TypeScript", "Spring Boot", "JWT", "PostgreSQL", "React"],
+        "achievements": [
+          "Complete backend with JWT authentication",
+          "Documentation of 20+ REST endpoints",
+          "SQL query optimization"
+        ],
+        "url": "https://github.com/Ceball0s/SpringSubastAll"
+      },
+      {
+        "title": "Alice Chess AI",
+        "role": "Lead Developer",
+        "description": "Artificial intelligence for playing chess",
+        "technologies": ["Python", "Minimax Algorithm", "GUI"],
+        "achievements": [
+          "Decision algorithm implementation",
+          "Intuitive user interface",
+          "Exhaustive performance testing"
+        ],
+        "url": "https://github.com/Ceball0s/IA_Ajedrez_de_Alicia"
+      },
+      {
+        "title": "DulceriaWeb",
+        "role": "Lead Developer",
+        "description": "Candy store management system",
+        "technologies": ["Python", "Flask", "PostgreSQL", "Docker", "Jinja2"],
+        "achievements": [
+          "RESTful API with authentication",
+          "Complete CRUD operations",
+          "Docker Compose deployment"
+        ],
+        "url": "https://github.com/Ceball0s/DulceriaWeb-Python-Flask"
+      }
+    ]
+  }
+}

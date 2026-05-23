@@ -32,9 +32,9 @@
   "technologies": ["Java", "Gradle", "Minecraft Fabric API", "Blockbench", "JSON", "Git"],
   "achievements": [
     "Casi 400 descargas en plataformas oficiales (CurseForge)",
-    "Desarrollo de IA personalizada: Implementación de algoritmos de Pathfinding (ReturnToHome) altamente optimizados y reconocimiento dinámico de facciones (TeamColors) en entidades.",
+    "Desarrollo de IA personalizada: Implementación de algoritmos de Pathfinding altamente optimizados en entidades.",
     "Programación de comandos avanzados (Brigadier API), incluyendo lógicas de manipulación volumétrica 3D para generación de bloques y parseo dinámico de datos.",
-    "Diseño de mecánicas complejas orientadas a estados, como mesas de alquimia con sistemas de recarga de energía y transmutación lógica de ítems en NBT.",
+    "Diseño de mecánicas complejas orientadas a estados, como mesas de alquimia con sistemas de recarga de energía y transmutación lógica de ítems.",
     "Modelado, texturizado y animación 3D de entidades y bloques interactivos utilizando Blockbench.",
     "Implementación de generación de terrenos, biomas y estructuras personalizadas generadas de manera procedural."
   ],

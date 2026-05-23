@@ -2,124 +2,203 @@
 import "../styles/global.css";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Miguel Angel Ceballos | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-</head>
-<body class="bg-neutral-950 text-neutral-100 selection:bg-blue-500/30">
-  <!-- Fondo dinámico -->
-  <div class="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
-  <div class="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(circle_farthest-side_at_0%_0%,#1e3a8a,transparent_100%)] opacity-20"></div>
-
-  <main class="min-h-screen px-6 py-10 md:px-8 md:py-14">
-    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-12">
-      
-      <!-- Perfil Principal -->
-      <section class="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm transition-all hover:border-blue-500/50 md:col-span-8">
-        <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-600/10 blur-3xl transition-all group-hover:bg-blue-600/20"></div>
-        <p class="font-mono text-xs uppercase tracking-[0.3em] text-blue-400">Junior Full Stack Engineer</p>
-        <h1 id="name" class="mt-4 text-4xl font-bold tracking-tight text-white md:text-6xl">Tu Nombre</h1>
-        <p id="role" class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300">Cargando perfil...</p>
-        
-        <div class="mt-8 flex flex-wrap gap-3">
-          <div id="location-container" class="flex items-center gap-2 rounded-full border border-blue-900/50 bg-blue-950/30 px-4 py-2 font-mono text-xs text-blue-200">
-            <i class="fa-solid fa-location-dot"></i>
-            <span id="location">Ubicación</span>
-          </div>
-          <div class="flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/30 px-4 py-2 font-mono text-xs text-neutral-300">
-            <i class="fa-solid fa-code-branch"></i>
-            <span id="project-count">0 proyectos</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contacto -->
-      <section class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm md:col-span-4">
-        <h2 class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-400">
-          <i class="fa-solid fa-paper-plane text-blue-400"></i>
-          Contacto
-        </h2>
-        <div id="social-links" class="mt-6 space-y-4"></div>
-      </section>
-
-      <!-- Habilidades -->
-      <section class="md:col-span-12">
-        <div class="mb-8 flex items-center justify-between">
-          <h2 class="flex items-center gap-3 text-2xl font-bold text-white">
-            <i class="fa-solid fa-screwdriver-wrench text-blue-500"></i>
-            Skills & Tecnologías
-          </h2>
-          <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div>
-        </div>
-        <div id="skills-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
-      </section>
-
-      <!-- Proyectos -->
-      <section class="md:col-span-12">
-        <div class="mb-8 flex items-center justify-between">
-          <h2 class="flex items-center gap-3 text-2xl font-bold text-white">
-            <i class="fa-solid fa-laptop-code text-blue-500"></i>
-            Proyectos Destacados
-          </h2>
-          <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div>
-        </div>
-        <div id="projects-grid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
-      </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miguel Angel Ceballos | Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="bg-neutral-950 text-neutral-100 selection:bg-blue-500/30">
+    <!-- Fondo dinámico -->
+    <div
+      class="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"
+    >
     </div>
-  </main>
+    <div
+      class="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(circle_farthest-side_at_0%_0%,#1e3a8a,transparent_100%)] opacity-20"
+    >
+    </div>
 
-  <footer class="mt-20 pb-10 text-center">
-    <p class="font-mono text-sm text-neutral-500">
-      &copy; {new Date().getFullYear()} Miguel Angel Ceballos
-    </p>
-  </footer>
+    <!-- Botón de idioma -->
+    <div class="fixed top-6 right-6 z-50">
+      <div
+        class="flex items-center rounded-full border border-neutral-800 bg-neutral-900/80 p-1 backdrop-blur-md"
+      >
+        <button
+          id="btn-es"
+          onclick="switchLanguage('es')"
+          class="rounded-full px-3 py-1 text-xs font-medium transition-all text-white bg-blue-600"
+          >ES</button
+        >
+        <button
+          id="btn-en"
+          onclick="switchLanguage('en')"
+          class="rounded-full px-3 py-1 text-xs font-medium transition-all text-neutral-400 hover:text-white"
+          >EN</button
+        >
+      </div>
+    </div>
 
-  <script>
-    const socialLinks = document.getElementById("social-links");
-    const projectsGrid = document.getElementById("projects-grid");
-    const skillsGrid = document.getElementById("skills-grid");
+    <main class="min-h-screen px-6 py-10 md:px-8 md:py-14">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-12">
+        <!-- Perfil Principal -->
+        <section
+          class="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm transition-all hover:border-blue-500/50 md:col-span-8"
+        >
+          <div
+            class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-600/10 blur-3xl transition-all group-hover:bg-blue-600/20"
+          >
+          </div>
+          <p
+            id="ui-subtitle"
+            class="font-mono text-xs uppercase tracking-[0.3em] text-blue-400"
+          >
+            Junior Full Stack Engineer
+          </p>
+          <h1
+            id="name"
+            class="mt-4 text-4xl font-bold tracking-tight text-white md:text-6xl"
+          >
+            Cargando...
+          </h1>
+          <p
+            id="role"
+            class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300"
+          >
+            Cargando perfil...
+          </p>
 
-    const TECH_ICONS = {
-      "React": "fa-brands fa-react text-[#61DAFB]",
-      "React Native": "fa-brands fa-react text-[#61DAFB]",
-      "Node.js": "fa-brands fa-node-js text-[#339933]",
-      "Python": "fa-brands fa-python text-[#3776AB]",
-      "Flask": "fa-solid fa-flask text-[#000000] dark:text-white",
-      "Java": "fa-brands fa-java text-[#ED8B00]",
-      "JavaScript": "fa-brands fa-js text-[#F7DF1E]",
-      "TypeScript": "fa-solid fa-code text-[#3178C6]",
-      "Docker": "fa-brands fa-docker text-[#2496ED]",
-      "AWS": "fa-brands fa-aws text-[#FF9900]",
-      "Git": "fa-brands fa-git-alt text-[#F05032]",
-      "Angular": "fa-brands fa-angular text-[#DD0031]",
-      "Kotlin": "fa-brands fa-android text-[#7F52FF]",
-      "Jetpack Compose": "fa-solid fa-mobile-screen text-[#4285F4]",
-      "Android Studio": "fa-brands fa-android text-[#3DDC84]",
-      "Astro": "fa-solid fa-rocket text-[#FF5D01]",
-      "TailwindCSS": "fa-solid fa-wind text-[#06B6D4]",
-      "Nextjs": "fa-solid fa-n text-white",
-      "Spring Boot": "fa-solid fa-leaf text-[#6DB33F]",
-      "PostgreSQL": "fa-solid fa-database text-[#336791]",
-      "PL/pgSQL": "fa-solid fa-database text-[#336791]",
-      "Firebase": "fa-solid fa-fire text-[#FFCA28]",
-      "Figma": "fa-brands fa-figma text-[#F24E1E]",
-      "Blockbench": "fa-solid fa-cube text-[#38BDF8]",
-      "Modelado 3D": "fa-solid fa-cubes text-[#38BDF8]",
-      "Microservicios": "fa-solid fa-cubes-stacked text-[#729FCF]",
-      "Netflix Eureka": "fa-solid fa-magnifying-glass text-[#E50914]",
-      "API Gateway": "fa-solid fa-door-open text-[#FF9900]",
-      "IA Generativa": "fa-solid fa-brain text-[#10A37F]",
-      "Jupyter Notebooks": "fa-solid fa-book text-[#F37626]",
-      "Minecraft Fabric API": "fa-solid fa-hammer text-[#ED8B00]",
-      "Prompt Engineering": "fa-solid fa-terminal text-[#10A37F]"
-    };
+          <div class="mt-8 flex flex-wrap gap-3">
+            <div
+              id="location-container"
+              class="flex items-center gap-2 rounded-full border border-blue-900/50 bg-blue-950/30 px-4 py-2 font-mono text-xs text-blue-200"
+            >
+              <i class="fa-solid fa-location-dot"></i>
+              <span id="location">Ubicación</span>
+            </div>
+            <div
+              class="flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/30 px-4 py-2 font-mono text-xs text-neutral-300"
+            >
+              <i class="fa-solid fa-code-branch"></i>
+              <span id="project-count">0 proyectos</span>
+            </div>
+          </div>
+        </section>
 
-    function linkCard(link) {
-      return `
+        <!-- Contacto -->
+        <section
+          class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm md:col-span-4"
+        >
+          <h2
+            class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-400"
+          >
+            <i class="fa-solid fa-paper-plane text-blue-400"></i>
+            <span id="ui-contact">Contacto</span>
+          </h2>
+          <div id="social-links" class="mt-6 space-y-4"></div>
+        </section>
+
+        <!-- Habilidades -->
+        <section class="md:col-span-12">
+          <div class="mb-8 flex items-center justify-between">
+            <h2 class="flex items-center gap-3 text-2xl font-bold text-white">
+              <i class="fa-solid fa-screwdriver-wrench text-blue-500"></i>
+              <span id="ui-skills">Skills & Tecnologías</span>
+            </h2>
+            <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div>
+          </div>
+          <div
+            id="skills-grid"
+            class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          >
+          </div>
+        </section>
+
+        <!-- Proyectos -->
+        <section class="md:col-span-12">
+          <div class="mb-8 flex items-center justify-between">
+            <h2 class="flex items-center gap-3 text-2xl font-bold text-white">
+              <i class="fa-solid fa-laptop-code text-blue-500"></i>
+              <span id="ui-projects">Proyectos Destacados</span>
+            </h2>
+            <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div>
+          </div>
+          <div
+            id="projects-grid"
+            class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="mt-20 pb-10 text-center">
+      <p id="ui-copyright" class="font-mono text-sm text-neutral-500">
+        &copy; 2026 Miguel Angel Ceballos
+      </p>
+    </footer>
+
+    <script>
+      const socialLinks = document.getElementById("social-links");
+      const projectsGrid = document.getElementById("projects-grid");
+      const skillsGrid = document.getElementById("skills-grid");
+
+      let portfolioData = null;
+      let currentLang = localStorage.getItem("portfolio_lang") || "es";
+
+      const TECH_ICONS = {
+        React: "fa-brands fa-react text-[#61DAFB]",
+        "React Native": "fa-brands fa-react text-[#61DAFB]",
+        "Node.js": "fa-brands fa-node-js text-[#339933]",
+        "C++": "fa-solid fa-code text-[#239120]",
+        CSS: "fa-solid fa-code text-[#239120]",
+        HTML: "fa-solid fa-code text-[#239120]",
+        scala: "fa-solid fa-code text-[#239120]",
+        Python: "fa-brands fa-python text-[#3776AB]",
+        Flask: "fa-solid fa-flask text-[#000000] dark:text-white",
+        Java: "fa-brands fa-java text-[#ED8B00]",
+        JavaScript: "fa-brands fa-js text-[#F7DF1E]",
+        TypeScript: "fa-solid fa-code text-[#3178C6]",
+        Docker: "fa-brands fa-docker text-[#2496ED]",
+        AWS: "fa-brands fa-aws text-[#FF9900]",
+        Git: "fa-brands fa-git-alt text-[#F05032]",
+        Angular: "fa-brands fa-angular text-[#DD0031]",
+        Kotlin: "fa-brands fa-android text-[#7F52FF]",
+        "Jetpack Compose": "fa-solid fa-mobile-screen text-[#4285F4]",
+        "Android Studio": "fa-brands fa-android text-[#3DDC84]",
+        Astro: "fa-solid fa-rocket text-[#FF5D01]",
+        TailwindCSS: "fa-solid fa-wind text-[#06B6D4]",
+        Nextjs: "fa-solid fa-n text-white",
+        "Spring Boot": "fa-solid fa-leaf text-[#6DB33F]",
+        PostgreSQL: "fa-solid fa-database text-[#336791]",
+        "PL/pgSQL": "fa-solid fa-database text-[#336791]",
+        Firebase: "fa-solid fa-fire text-[#FFCA28]",
+        Figma: "fa-brands fa-figma text-[#F24E1E]",
+        Blockbench: "fa-solid fa-cube text-[#38BDF8]",
+        "Modelado 3D": "fa-solid fa-cubes text-[#38BDF8]",
+        Microservicios: "fa-solid fa-cubes-stacked text-[#729FCF]",
+        "Netflix Eureka": "fa-solid fa-magnifying-glass text-[#E50914]",
+        "API Gateway": "fa-solid fa-door-open text-[#FF9900]",
+        "IA Generativa": "fa-solid fa-brain text-[#10A37F]",
+        "Jupyter Notebooks": "fa-solid fa-book text-[#F37626]",
+        "Minecraft Fabric API": "fa-solid fa-hammer text-[#ED8B00]",
+        "Minecraft Forge API": "fa-solid fa-hammer text-[#ED8B00]",
+        "Prompt Engineering": "fa-solid fa-terminal text-[#10A37F]",
+        "C#": "fa-solid fa-code text-[#239120]",
+        ".NET": "fa-brands fa-microsoft text-[#512BD4]",
+        Flutter: "fa-solid fa-mobile-screen text-[#02569B]",
+        Dart: "fa-solid fa-code text-[#0175C2]",
+        SQLite: "fa-solid fa-database text-[#003B57]",
+        Express: "fa-brands fa-node-js text-[#000000] dark:text-white",
+      };
+
+      function linkCard(link, ui) {
+        return `
         <a href="${link.url}" target="_blank" rel="noreferrer"
            class="group flex items-center gap-4 rounded-xl border border-neutral-800 bg-neutral-950/50 px-5 py-4 text-sm text-neutral-300 transition-all hover:border-blue-500 hover:bg-blue-500/5 hover:text-white">
           <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-lg transition-transform group-hover:scale-110" style="color: ${link.color}">
@@ -127,43 +206,65 @@ import "../styles/global.css";
           </div>
           <div class="flex-1">
             <span class="block font-semibold">${link.name}</span>
-            <span class="text-xs text-neutral-500">Visitar perfil</span>
+            <span class="text-xs text-neutral-500">${ui.visitProfile}</span>
           </div>
           <i class="fa-solid fa-arrow-up-right-from-square text-xs text-neutral-600 transition-colors group-hover:text-blue-400"></i>
         </a>`;
-    }
+      }
 
-    function projectCard(project) {
-      const achievements = project.achievements.slice(0, 2).map((item) => `<li class="flex items-start gap-2">
+      function projectCard(project) {
+        const achievements = project.achievements
+          .slice(0, 2)
+          .map(
+            (item) => `<li class="flex items-start gap-2">
         <i class="fa-solid fa-check text-blue-500 mt-1 text-[10px]"></i>
         <span>${item}</span>
-      </li>`).join("");
-      
-      const technologies = project.technologies
-        .map((tech) => {
-          const icon = TECH_ICONS[tech] || "fa-solid fa-microchip text-neutral-400";
-          return `<span class="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900 px-3 py-1 font-mono text-[10px] text-neutral-300 hover:border-neutral-600 transition-colors">
+      </li>`,
+          )
+          .join("");
+
+        const technologies = project.technologies
+          .map((tech) => {
+            const icon =
+              TECH_ICONS[tech] || "fa-solid fa-microchip text-neutral-400";
+            return `<span class="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900 px-3 py-1 font-mono text-[10px] text-neutral-300 hover:border-neutral-600 transition-colors">
             <i class="${icon} text-xs"></i>
             ${tech}
           </span>`;
-        })
-        .join("");
+          })
+          .join("");
 
-      // Obtener el icono del lenguaje predominante (el primero de la lista)
-      const mainTech = project.technologies[0];
-      const mainIcon = TECH_ICONS[mainTech] || "fa-solid fa-folder-open";
+        // Obtener el icono del lenguaje predominante (el primero de la lista)
+        const mainTech = project.technologies[0];
+        const mainIcon = TECH_ICONS[mainTech] || "fa-solid fa-folder-open";
 
-      return `
+        return `
         <article class="group relative flex flex-col rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 transition-all hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10">
-          <a href="${project.url}" target="_blank" rel="noreferrer" class="absolute inset-0 z-10" aria-label="Ver proyecto ${project.title}"></a>
+          ${project.url ? `<a href="${project.url}" target="_blank" rel="noreferrer" class="absolute inset-0 z-10" aria-label="Ver proyecto ${project.title}"></a>` : ""}
           
           <div class="relative z-0 flex flex-col h-full">
             <div class="flex items-start justify-between">
               <div class="rounded-lg bg-blue-500/10 p-3 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <i class="${mainIcon} text-xl"></i>
               </div>
-              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800/50 text-neutral-400 transition-all group-hover:bg-neutral-800 group-hover:text-white">
-                <i class="fa-brands fa-github text-lg"></i>
+              <div class="flex gap-2 relative z-20">
+                ${
+                  project.links
+                    ? project.links
+                        .map(
+                          (l) => `
+                  <a href="${l.url}" target="_blank" rel="noreferrer" class="flex h-8 px-3 items-center justify-center rounded-full bg-neutral-800/50 text-neutral-400 transition-all hover:bg-neutral-700 hover:text-white group-hover:bg-neutral-800 group-hover:text-white" title="${l.name}">
+                    <span class="text-[10px] uppercase font-bold mr-2 tracking-wider">${l.name}</span> <i class="${l.icon || "fa-brands fa-github"} text-sm"></i>
+                  </a>
+                `,
+                        )
+                        .join("")
+                    : `
+                  <a href="${project.url}" target="_blank" rel="noreferrer" class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800/50 text-neutral-400 transition-all hover:bg-neutral-700 hover:text-white group-hover:bg-neutral-800 group-hover:text-white" title="Ver código">
+                    <i class="fa-brands fa-github text-lg"></i>
+                  </a>
+                `
+                }
               </div>
             </div>
             
@@ -174,31 +275,37 @@ import "../styles/global.css";
             <div class="mt-auto pt-6 flex flex-wrap gap-2 relative z-20">${technologies}</div>
           </div>
         </article>`;
-    }
+      }
 
-    function skillCard(category) {
-      const skills = category.skills
-        .map((skill) => {
-          const icon = TECH_ICONS[skill] || "fa-solid fa-check text-neutral-600";
-          return `<div class="group/skill flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900/50 p-3 transition-all hover:border-neutral-600 hover:bg-neutral-800">
+      function skillCard(category) {
+        const skills = category.skills
+          .map((skill) => {
+            const icon =
+              TECH_ICONS[skill] || "fa-solid fa-check text-neutral-600";
+            return `<div class="group/skill flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900/50 p-3 transition-all hover:border-neutral-600 hover:bg-neutral-800">
             <i class="${icon} transition-transform group-hover/skill:scale-125"></i>
             <span class="text-sm font-medium text-neutral-300 group-hover/skill:text-white">${skill}</span>
           </div>`;
-        })
-        .join("");
+          })
+          .join("");
 
-      const categoryIcons = {
-        "Lenguajes": "fa-solid fa-terminal",
-        "Frontend": "fa-solid fa-display",
-        "Backend": "fa-solid fa-server",
-        "Datos": "fa-solid fa-database",
-        "DevOps": "fa-solid fa-infinity",
-        "Móvil": "fa-solid fa-mobile-screen-button"
-      };
-      
-      const icon = categoryIcons[category.name] || "fa-solid fa-layer-group";
+        // Mapping icon by category name doesn't work well across languages if name changes.
+        // Better to map by an index or use a fallback. We'll use a simple fallback mapping based on common keywords.
+        let icon = "fa-solid fa-layer-group";
+        const catName = category.name.toLowerCase();
+        if (catName.includes("lenguaj") || catName.includes("language"))
+          icon = "fa-solid fa-terminal";
+        else if (catName.includes("front")) icon = "fa-solid fa-display";
+        else if (catName.includes("back")) icon = "fa-solid fa-server";
+        else if (catName.includes("dato") || catName.includes("data"))
+          icon = "fa-solid fa-database";
+        else if (catName.includes("devops")) icon = "fa-solid fa-infinity";
+        else if (catName.includes("móvil") || catName.includes("mobile"))
+          icon = "fa-solid fa-mobile-screen-button";
+        else if (catName.includes("diseño") || catName.includes("design"))
+          icon = "fa-solid fa-pen-nib";
 
-      return `
+        return `
         <article class="rounded-2xl border border-neutral-800 bg-neutral-950/30 p-6 backdrop-blur-sm transition-all hover:bg-neutral-900/30">
           <div class="mb-6 flex items-center gap-3">
             <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
@@ -208,32 +315,73 @@ import "../styles/global.css";
           </div>
           <div class="grid grid-cols-2 gap-3">${skills}</div>
         </article>`;
-    }
+      }
 
-    async function renderPortfolio() {
-      try {
-        const [projectsResponse, infoResponse] = await Promise.all([
-          fetch("/data/projects.json"),
-          fetch("/data/info.json")
-        ]);
-        const projects = await projectsResponse.json();
-        const info = await infoResponse.json();
+      function renderUI() {
+        if (!portfolioData) return;
 
+        const data = portfolioData[currentLang];
+        const info = data.info;
+        const projects = data.projects;
+        const ui = data.ui;
+
+        // Update texts
+        document.getElementById("ui-subtitle").textContent = ui.subtitle;
         document.getElementById("name").textContent = info.fullTexts.name;
         document.getElementById("role").textContent = info.fullTexts.role;
-        document.getElementById("location").textContent = info.fullTexts.location;
-        document.getElementById("project-count").textContent = `${projects.length} proyectos`;
+        document.getElementById("location").textContent =
+          info.fullTexts.location;
+        document.getElementById("project-count").textContent =
+          `${projects.length} ${ui.projectsCount}`;
+        document.getElementById("ui-contact").textContent = ui.contact;
+        document.getElementById("ui-skills").textContent = ui.skills;
+        document.getElementById("ui-projects").textContent = ui.projects;
+        document.getElementById("ui-copyright").innerHTML =
+          ui.copyright.replace("{year}", new Date().getFullYear());
 
-        socialLinks.innerHTML = info.socialLinks.map(linkCard).join("");
+        // Update language buttons styling
+        const btnEs = document.getElementById("btn-es");
+        const btnEn = document.getElementById("btn-en");
+        if (currentLang === "es") {
+          btnEs.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-white bg-blue-600";
+          btnEn.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-neutral-400 hover:text-white";
+          document.documentElement.lang = "es";
+        } else {
+          btnEn.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-white bg-blue-600";
+          btnEs.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-neutral-400 hover:text-white";
+          document.documentElement.lang = "en";
+        }
+
+        // Render grids
+        socialLinks.innerHTML = info.socialLinks
+          .map((link) => linkCard(link, ui))
+          .join("");
         projectsGrid.innerHTML = projects.map(projectCard).join("");
         skillsGrid.innerHTML = info.skillCategories.map(skillCard).join("");
-      } catch (error) {
-        console.error("Error cargando el portfolio:", error);
       }
-    }
 
-    renderPortfolio();
-  </script>
-</body>
+      window.switchLanguage = function (lang) {
+        if (currentLang === lang) return;
+        currentLang = lang;
+        localStorage.setItem("portfolio_lang", lang);
+        renderUI();
+      };
+
+      async function loadData() {
+        try {
+          const response = await fetch("/data/i18n.json");
+          portfolioData = await response.json();
+          renderUI();
+        } catch (error) {
+          console.error("Error cargando el portfolio:", error);
+        }
+      }
+
+      loadData();
+    </script>
+  </body>
 </html>
-
