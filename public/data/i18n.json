@@ -52,12 +52,8 @@
           "skills": ["Node.js", "Spring Boot", "Microservicios", "API Gateway", "Netflix Eureka", "JWT", "Nextjs", "Express", "Flask", ".NET"]
         },
         {
-          "name": "IA & Ciencia de Datos",
-          "skills": ["IA Generativa", "Prompt Engineering", "Jupyter Notebooks", "Análisis de Datos"]
-        },
-        {
-          "name": "Modelado & Diseño",
-          "skills": ["Figma", "Blockbench", "Modelado 3D", "UI/UX Design"]
+          "name": "Diseño & Análisis de Datos",
+          "skills": ["Figma", "Blockbench", "Modelado 3D", "UI/UX Design", "Prompt Engineering", "pandas", "NumPy", "Análisis de Datos"]
         },
         {
           "name": "DevOps & Herramientas",
@@ -71,16 +67,17 @@
     },
     "projects": [
       {
-        "title": "DevRoute",
+        "title": "LogiNet",
         "role": "Desarrollador Full Stack",
-        "description": "Plataforma de logística y gestión de entregas con sistema de autenticación JWT, panel administrativo y seguimiento de órdenes. Backend en .NET con Entity Framework y app móvil multiplataforma en Flutter.",
+        "description": "Solución Full Stack para optimizar la logística de entregas locales con autenticación JWT, panel administrativo y dashboard para repartidores. Backend en .NET con Entity Framework y app móvil en Flutter.",
         "technologies": ["C#", ".NET", "Flutter", "Dart", "SQLite", "JWT"],
         "achievements": [
           "Backend RESTful con autenticación JWT y autorización basada en roles (Admin/Repartidor)",
-          "App móvil con panel de administración, registro de usuarios y gestión de órdenes",
-          "Arquitectura limpia con Entity Framework Core y SQLite"
+          "App móvil con panel de administración, CRUD de órdenes y dashboard de entregas",
+          "Actualización en tiempo real con pull-to-refresh y filtros por estado de orden"
         ],
-        "url": "https://github.com/Ceball0s/DevRoute"
+        "url": "https://github.com/Ceball0s/LogiNet",
+        "images": ["/images/proyectos/LogiNet/1.png", "/images/proyectos/LogiNet/2.png", "/images/proyectos/LogiNet/3.png"]
       },
       {
         "title": "TaskPro",
@@ -95,7 +92,8 @@
         "links": [
           { "name": "Frontend", "url": "https://github.com/Alejma/TaskPro-Frontend" },
           { "name": "Backend", "url": "https://github.com/Alejma/TaskPro-Backend" }
-        ]
+        ],
+        "images": ["/images/proyectos/taskpro/1.png", "/images/proyectos/taskpro/2.png", "/images/proyectos/taskpro/3.png"]
       },
       {
         "title": "WikiFut",
@@ -109,17 +107,19 @@
           "Diseño modular con arquitectura MVVM y Jetpack Compose",
           "Integración con API externa y autenticación Firebase"
         ],
-        "url": "https://github.com/StivenHenao/WikiFut"
+        "url": "https://github.com/StivenHenao/WikiFut",
+        "images": ["/images/proyectos/wikifut/1.png", "/images/proyectos/wikifut/2.png", "/images/proyectos/wikifut/3.png"]
       },
       {
         "title": "UnivalleMatriculaApp",
         "role": "Líder de Desarrollo",
-        "description": "Aplicación de matrículas para la Universidad del Valle",
-        "technologies": ["React Native", "Figma", "Excel Integration", "React Navigation"],
+        "description": "App de matriculación para gestionar materias y matricularlas rápidamente en el SIRA de la Universidad del Valle. Inicio de sesión, gestión de materias, matriculación en un clic y temas claro/oscuro.",
+        "technologies": ["React Native", "Expo", "Figma", "React Navigation"],
         "achievements": [
           "Arquitectura modular para mejor escalabilidad",
           "Implementación de temas claro/oscuro",
-          "Gestor de materias con carga desde Excel"
+          "Gestor de materias con carga desde Excel y matriculación rápida al SIRA",
+          "Generación de APK con Expo Application Services"
         ],
         "url": "https://github.com/Ceball0s/UnivalleMatriculaApp"
       },
@@ -141,31 +141,31 @@
       {
         "title": "SubastALL",
         "role": "Líder de Desarrollo y Backend",
-        "description": "Plataforma de subastas en línea",
+        "description": "Plataforma de subastas en línea con backend en Spring Boot (API RESTful con autenticación JWT) y frontend en React con TypeScript. Sistema completo de pujas, gestión de subastas, recomendaciones y fotos de productos.",
         "technologies": ["Java", "TypeScript", "Spring Boot", "JWT", "PostgreSQL", "React"],
         "achievements": [
-          "Backend completo con autenticación JWT",
-          "Documentación de 20+ endpoints REST",
-          "Optimización de consultas SQL"
+          "Backend completo con autenticación JWT y 20+ endpoints REST documentados",
+          "Sistema de pujas, creación y cierre de subastas con validaciones",
+          "Optimización de consultas SQL y recomendaciones personalizadas"
         ],
         "url": "https://github.com/Ceball0s/SpringSubastAll"
       },
       {
         "title": "IA Ajedrez de Alicia",
         "role": "Desarrollador Principal",
-        "description": "Inteligencia artificial para jugar ajedrez",
-        "technologies": ["Python", "Algoritmo Minimax", "Interfaz gráfica"],
+        "description": "Inteligencia artificial para jugar ajedrez utilizando el algoritmo Minimax con interfaz web. Implementa un tablero completo con reglas oficiales y evaluación heurística de movimientos.",
+        "technologies": ["Python", "Minimax", "Flask", "HTML/CSS/JS"],
         "achievements": [
-          "Implementación de algoritmo de decisión",
-          "Interfaz de usuario intuitiva",
-          "Pruebas exhaustivas de rendimiento"
+          "Implementación del algoritmo Minimax con poda alfa-beta para decisiones óptimas",
+          "Tablero de ajedrez virtual con reglas completas de movimiento",
+          "Interfaz web interactiva con Flask para jugar contra la IA en tiempo real"
         ],
         "url": "https://github.com/Ceball0s/IA_Ajedrez_de_Alicia"
       },
       {
         "title": "DulceriaWeb",
         "role": "Desarrollador Principal",
-        "description": "Sistema de gestión para dulcería",
+        "description": "Sistema de gestión para dulcería con backend Flask (API RESTful con autenticación y sesiones), frontend con Jinja2 y PostgreSQL. Catálogo de productos, carrito de compras y gestión de usuarios. Desplegado con Docker Swarm.",
         "technologies": ["Python", "Flask", "PostgreSQL", "Docker", "Jinja2"],
         "achievements": [
           "API RESTful con autenticación",
@@ -229,12 +229,8 @@
           "skills": ["Node.js", "Spring Boot", "Microservices", "API Gateway", "Netflix Eureka", "JWT", "Nextjs", "Express", "Flask", ".NET"]
         },
         {
-          "name": "AI & Data Science",
-          "skills": ["Generative AI", "Prompt Engineering", "Jupyter Notebooks", "Data Analysis"]
-        },
-        {
-          "name": "Modeling & Design",
-          "skills": ["Figma", "Blockbench", "3D Modeling", "UI/UX Design"]
+          "name": "Design & Data Analysis",
+          "skills": ["Figma", "Blockbench", "3D Modeling", "UI/UX Design", "Prompt Engineering", "pandas", "NumPy", "Data Analysis"]
         },
         {
           "name": "DevOps & Tools",
@@ -248,16 +244,17 @@
     },
     "projects": [
       {
-        "title": "DevRoute",
+        "title": "LogiNet",
         "role": "Full Stack Developer",
-        "description": "Logistics and delivery management platform with JWT authentication, admin dashboard and order tracking. .NET backend with Entity Framework and cross-platform mobile app built with Flutter.",
+        "description": "Full Stack solution to optimize local delivery logistics with JWT authentication, admin panel and driver dashboard. .NET backend with Entity Framework and cross-platform mobile app built with Flutter.",
         "technologies": ["C#", ".NET", "Flutter", "Dart", "SQLite", "JWT"],
         "achievements": [
           "RESTful backend with JWT authentication and role-based authorization (Admin/Driver)",
-          "Mobile app with admin panel, user registration and order management",
-          "Clean architecture with Entity Framework Core and SQLite"
+          "Mobile app with admin panel, order CRUD and delivery dashboard",
+          "Real-time updates with pull-to-refresh and order status filters"
         ],
-        "url": "https://github.com/Ceball0s/DevRoute"
+        "url": "https://github.com/Ceball0s/LogiNet",
+        "images": ["/images/proyectos/LogiNet/1.png", "/images/proyectos/LogiNet/2.png", "/images/proyectos/LogiNet/3.png"]
       },
       {
         "title": "TaskPro",
@@ -272,7 +269,8 @@
         "links": [
           { "name": "Frontend", "url": "https://github.com/Alejma/TaskPro-Frontend" },
           { "name": "Backend", "url": "https://github.com/Alejma/TaskPro-Backend" }
-        ]
+        ],
+        "images": ["/images/proyectos/taskpro/1.png", "/images/proyectos/taskpro/2.png", "/images/proyectos/taskpro/3.png"]
       },
       {
         "title": "WikiFut",
@@ -286,19 +284,22 @@
           "Modular design with MVVM architecture and Jetpack Compose",
           "External API integration and Firebase authentication"
         ],
-        "url": "https://github.com/StivenHenao/WikiFut"
+        "url": "https://github.com/StivenHenao/WikiFut",
+        "images": ["/images/proyectos/wikifut/1.png", "/images/proyectos/wikifut/2.png", "/images/proyectos/wikifut/3.png"]
       },
       {
         "title": "UnivalleMatriculaApp",
         "role": "Development Lead",
-        "description": "Enrollment application for Universidad del Valle",
-        "technologies": ["React Native", "Figma", "Excel Integration", "React Navigation"],
+        "description": "Enrollment app to manage courses and quickly register them in Universidad del Valle's SIRA system. Login, course management, one-click enrollment and light/dark themes.",
+        "technologies": ["React Native", "Expo", "Figma", "React Navigation"],
         "achievements": [
           "Modular architecture for better scalability",
           "Light/dark theme implementation",
-          "Course manager with Excel import"
+          "Course manager with Excel import and quick SIRA enrollment",
+          "APK generation with Expo Application Services"
         ],
-        "url": "https://github.com/Ceball0s/UnivalleMatriculaApp"
+        "url": "https://github.com/Ceball0s/UnivalleMatriculaApp",
+        "images": ["/images/proyectos/matriculaapp/1.jpeg", "/images/proyectos/matriculaapp/2.jpeg", "/images/proyectos/matriculaapp/3.jpeg"]
       },
       {
         "title": "Java Minecraft Modding",
@@ -318,36 +319,36 @@
       {
         "title": "SubastALL",
         "role": "Development Lead & Backend",
-        "description": "Online auction platform",
+        "description": "Online auction platform with a Spring Boot backend (RESTful API with JWT authentication) and a React + TypeScript frontend. Complete bidding system, auction management, recommendations and product photos.",
         "technologies": ["Java", "TypeScript", "Spring Boot", "JWT", "PostgreSQL", "React"],
         "achievements": [
-          "Complete backend with JWT authentication",
-          "Documentation of 20+ REST endpoints",
-          "SQL query optimization"
+          "Complete backend with JWT authentication and 20+ documented REST endpoints",
+          "Bidding system with auction creation, closing and validation",
+          "SQL query optimization and personalized recommendations"
         ],
         "url": "https://github.com/Ceball0s/SpringSubastAll"
       },
       {
         "title": "Alice Chess AI",
         "role": "Lead Developer",
-        "description": "Artificial intelligence for playing chess",
-        "technologies": ["Python", "Minimax Algorithm", "GUI"],
+        "description": "Artificial intelligence for playing chess using the Minimax algorithm with a web interface. Implements a complete chess board with official rules and heuristic move evaluation.",
+        "technologies": ["Python", "Minimax", "Flask", "HTML/CSS/JS"],
         "achievements": [
-          "Decision algorithm implementation",
-          "Intuitive user interface",
-          "Exhaustive performance testing"
+          "Minimax algorithm with alpha-beta pruning for optimal decisions",
+          "Virtual chess board with complete movement rules",
+          "Interactive web interface with Flask to play against the AI in real time"
         ],
         "url": "https://github.com/Ceball0s/IA_Ajedrez_de_Alicia"
       },
       {
         "title": "DulceriaWeb",
         "role": "Lead Developer",
-        "description": "Candy store management system",
+        "description": "Candy store management system with a Flask backend (RESTful API with authentication and sessions), Jinja2 frontend and PostgreSQL. Product catalog, shopping cart and user management. Deployed with Docker Swarm.",
         "technologies": ["Python", "Flask", "PostgreSQL", "Docker", "Jinja2"],
         "achievements": [
-          "RESTful API with authentication",
-          "Complete CRUD operations",
-          "Docker Compose deployment"
+          "RESTful API with authentication, sessions and CRUD operations",
+          "Product catalog with shopping cart and order management",
+          "Docker Swarm deployment with container orchestration"
         ],
         "url": "https://github.com/Ceball0s/DulceriaWeb-Python-Flask"
       }
