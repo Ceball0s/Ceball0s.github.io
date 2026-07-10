@@ -45,7 +45,7 @@
         },
         {
           "name": "Frontend",
-          "skills": ["HTML", "CSS", "React", "Angular", "Astro", "TailwindCSS"]
+          "skills": ["HTML", "CSS", "React", "Angular", "Astro", "TailwindCSS", "Electron", "Vue 3"]
         },
         {
           "name": "Backend & Arquitectura",
@@ -66,6 +66,19 @@
       ]
     },
     "projects": [
+      {
+        "title": "PadBrowser",
+        "role": "Desktop Application Developer",
+        "description": "Navegador web optimizado para TV y control por gamepad, construido con Electron y Vue 3. Navegación completa con controles de Xbox/PlayStation, ideal para HTPCs, Steam Deck y navegación desde el sofá.",
+        "technologies": ["Electron", "Vue 3", "TypeScript", "Astro", "Vite"],
+        "achievements": [
+          "Navegación completa por gamepad con cursor virtual, D-Pad espacial y mapeo de botones",
+          "Interfaz estilo Opera GX con tema oscuro, pestañas, historial y gestor de descargas",
+          "Teclado en pantalla y tutorial interactivo para primera configuración"
+        ],
+        "url": "https://github.com/Ceball0s/PadBrowser",
+        "images": ["/images/proyectos/padbrowser/1.png", "/images/proyectos/padbrowser/2.png"]
+      },
       {
         "title": "LogiNet",
         "role": "Desarrollador Full Stack",
@@ -222,7 +235,7 @@
         },
         {
           "name": "Frontend",
-          "skills": ["HTML", "CSS", "React", "Angular", "Astro", "TailwindCSS"]
+          "skills": ["HTML", "CSS", "React", "Angular", "Astro", "TailwindCSS", "Electron", "Vue 3"]
         },
         {
           "name": "Backend & Architecture",
@@ -243,6 +256,19 @@
       ]
     },
     "projects": [
+      {
+        "title": "PadBrowser",
+        "role": "Desktop Application Developer",
+        "description": "TV-friendly web browser built with Electron and Vue 3, designed for Xbox/PlayStation gamepad navigation. Browse the internet entirely with a controller, perfect for HTPCs, Steam Deck, and couch browsing.",
+        "technologies": ["Electron", "Vue 3", "TypeScript", "Astro", "Vite"],
+        "achievements": [
+          "Full gamepad navigation with virtual cursor, spatial D-Pad navigation and complete button mapping",
+          "Opera GX-inspired UI with dark theme, tabs, history and download manager",
+          "On-screen keyboard and interactive first-launch tutorial"
+        ],
+        "url": "https://github.com/Ceball0s/PadBrowser",
+        "images": ["/images/proyectos/padbrowser/1.png", "/images/proyectos/padbrowser/2.png"]
+      },
       {
         "title": "LogiNet",
         "role": "Full Stack Developer",
