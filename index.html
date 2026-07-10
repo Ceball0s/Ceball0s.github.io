@@ -4,6 +4,477 @@ Junior Full Stack Engineer
 Cargando...
 </h1> <p id="role" class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300">
 Cargando perfil...
-</p> <div class="mt-8 flex flex-wrap gap-3"> <div id="location-container" class="flex items-center gap-2 rounded-full border border-blue-900/50 bg-blue-950/30 px-4 py-2 font-mono text-xs text-blue-200"> <i class="fa-solid fa-location-dot"></i> <span id="location">Ubicación</span> </div> <div class="flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/30 px-4 py-2 font-mono text-xs text-neutral-300"> <i class="fa-solid fa-code-branch"></i> <span id="project-count">0 proyectos</span> </div> </div> </section> <!-- Contacto --> <section class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm md:col-span-4"> <h2 class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-400"> <i class="fa-solid fa-paper-plane text-blue-400"></i> <span id="ui-contact">Contacto</span> </h2> <div id="social-links" class="mt-6 space-y-4"></div> </section> <!-- Habilidades --> <section class="md:col-span-12"> <div class="mb-8 flex items-center justify-between"> <h2 class="flex items-center gap-3 text-2xl font-bold text-white"> <i class="fa-solid fa-screwdriver-wrench text-blue-500"></i> <span id="ui-skills">Skills & Tecnologías</span> </h2> <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div> </div> <div id="skills-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div> </section> <!-- Proyectos --> <section class="md:col-span-12"> <div class="mb-8 flex items-center justify-between"> <h2 class="flex items-center gap-3 text-2xl font-bold text-white"> <i class="fa-solid fa-laptop-code text-blue-500"></i> <span id="ui-projects">Proyectos Destacados</span> </h2> <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div> </div> <div id="projects-grid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div> </section> </div> </main> <footer class="mt-20 pb-10 text-center"> <p id="ui-copyright" class="font-mono text-sm text-neutral-500">
+</p> <div class="mt-8 flex flex-wrap gap-3"> <div id="location-container" class="flex items-center gap-2 rounded-full border border-blue-900/50 bg-blue-950/30 px-4 py-2 font-mono text-xs text-blue-200"> <i class="fa-solid fa-location-dot"></i> <span id="location">Ubicación</span> </div> <div class="flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/30 px-4 py-2 font-mono text-xs text-neutral-300"> <i class="fa-solid fa-code-branch"></i> <span id="project-count">0 proyectos</span> </div> </div> </section> <!-- Contacto --> <section class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm md:col-span-4"> <h2 class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-400"> <i class="fa-solid fa-paper-plane text-blue-400"></i> <span id="ui-contact">Contacto</span> </h2> <div id="social-links" class="mt-6 space-y-4"></div> </section> <!-- Habilidades --> <section class="md:col-span-12"> <div class="mb-8 flex items-center justify-between"> <h2 class="flex items-center gap-3 text-2xl font-bold text-white"> <i class="fa-solid fa-screwdriver-wrench text-blue-500"></i> <span id="ui-skills">Skills & Tecnologías</span> </h2> <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div> </div> <div id="skills-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div> </section> <!-- Proyectos Destacados --> <section class="md:col-span-12"> <div class="mb-8 flex items-center justify-between"> <h2 class="flex items-center gap-3 text-2xl font-bold text-white"> <i class="fa-solid fa-laptop-code text-blue-500"></i> <span id="ui-projects">Proyectos Destacados</span> </h2> <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div> </div> <div id="featured-grid" class="grid gap-6 md:grid-cols-2"></div> </section> <!-- Otros Proyectos (Carrusel) --> <section id="carousel-section" class="md:col-span-12 hidden"> <div class="mb-8 flex items-center justify-between"> <h2 class="flex items-center gap-3 text-2xl font-bold text-white"> <i class="fa-solid fa-layer-group text-blue-500"></i> <span id="ui-more-projects">Más Proyectos</span> </h2> <div class="h-px flex-1 bg-neutral-800 ml-6 hidden md:block"></div> </div> <div class="carousel-wrapper relative"> <button id="carousel-prev" class="carousel-arrow carousel-arrow-left" aria-label="Anterior"> <i class="fa-solid fa-chevron-left"></i> </button> <div class="carousel-viewport overflow-hidden"> <div id="carousel-track" class="carousel-track flex gap-6"></div> </div> <button id="carousel-next" class="carousel-arrow carousel-arrow-right" aria-label="Siguiente"> <i class="fa-solid fa-chevron-right"></i> </button> </div> </section> </div> </main> <footer class="mt-20 pb-10 text-center"> <p id="ui-copyright" class="font-mono text-sm text-neutral-500">
 &copy; 2026 Miguel Angel Ceballos
-</p> </footer> <!-- Lightbox --> <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm" onclick="closeLightbox(event)"> <button onclick="closeLightbox()" class="absolute top-6 right-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900/80 text-white text-2xl transition-all hover:bg-neutral-700"> <i class="fa-solid fa-xmark"></i> </button> <button id="lb-prev" onclick="event.stopPropagation();navigateLightbox(-1)" class="absolute left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900/80 text-white text-xl transition-all hover:bg-neutral-700"> <i class="fa-solid fa-chevron-left"></i> </button> <button id="lb-next" onclick="event.stopPropagation();navigateLightbox(1)" class="absolute right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900/80 text-white text-xl transition-all hover:bg-neutral-700"> <i class="fa-solid fa-chevron-right"></i> </button> <img id="lightbox-img" class="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl" onclick="event.stopPropagation()"> </div> <script type="module" src="/_astro/index.astro_astro_type_script_index_0_lang.oJiyyK-D.js"></script> </body> </html>
+</p> </footer> <!-- Lightbox --> <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm" onclick="closeLightbox(event)"> <button onclick="closeLightbox()" class="absolute top-6 right-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900/80 text-white text-2xl transition-all hover:bg-neutral-700"> <i class="fa-solid fa-xmark"></i> </button> <button id="lb-prev" onclick="event.stopPropagation();navigateLightbox(-1)" class="absolute left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900/80 text-white text-xl transition-all hover:bg-neutral-700"> <i class="fa-solid fa-chevron-left"></i> </button> <button id="lb-next" onclick="event.stopPropagation();navigateLightbox(1)" class="absolute right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900/80 text-white text-xl transition-all hover:bg-neutral-700"> <i class="fa-solid fa-chevron-right"></i> </button> <img id="lightbox-img" class="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl" onclick="event.stopPropagation()"> </div> <style>
+      .featured-image-container {
+        height: 240px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px;
+      }
+      .featured-image-container img {
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .featured-image-container .single-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .featured-card {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .carousel-wrapper {
+        position: relative;
+      }
+      .carousel-viewport {
+        mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      }
+      .carousel-track {
+        will-change: transform;
+      }
+      .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(23, 23, 23, 0.85);
+        border: 1px solid rgba(64, 64, 64, 0.5);
+        color: #a3a3a3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        backdrop-filter: blur(8px);
+      }
+      .carousel-arrow:hover {
+        background: rgba(38, 38, 38, 0.95);
+        color: #fff;
+        border-color: rgba(59, 130, 246, 0.5);
+      }
+      .carousel-arrow-left {
+        left: -8px;
+      }
+      .carousel-arrow-right {
+        right: -8px;
+      }
+      .carousel-card {
+        user-select: none;
+      }
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      @media (max-width: 768px) {
+        .featured-image-container {
+          height: 180px;
+          gap: 4px;
+          padding: 4px;
+        }
+        .featured-image-container img {
+          max-height: 100%;
+        }
+        .carousel-arrow {
+          display: none;
+        }
+      }
+    </style> <script>
+      const socialLinks = document.getElementById("social-links");
+      const featuredGrid = document.getElementById("featured-grid");
+      const carouselTrack = document.getElementById("carousel-track");
+      const carouselSection = document.getElementById("carousel-section");
+      const skillsGrid = document.getElementById("skills-grid");
+
+      let portfolioData = null;
+      let currentLang = localStorage.getItem("portfolio_lang") || "es";
+      let lbImages = [];
+      let lbIndex = 0;
+
+      const TECH_ICONS = {
+        React: "fa-brands fa-react text-[#61DAFB]",
+        "React Native": "fa-brands fa-react text-[#61DAFB]",
+        "Node.js": "fa-brands fa-node-js text-[#339933]",
+        "C++": "fa-solid fa-code text-[#239120]",
+        CSS: "fa-solid fa-code text-[#239120]",
+        HTML: "fa-solid fa-code text-[#239120]",
+        scala: "fa-solid fa-code text-[#239120]",
+        Minimax: "fa-solid fa-chess-knight text-[#10A37F]",
+        Python: "fa-brands fa-python text-[#3776AB]",
+        Flask: "fa-solid fa-flask text-[#000000] dark:text-white",
+        Java: "fa-brands fa-java text-[#ED8B00]",
+        JavaScript: "fa-brands fa-js text-[#F7DF1E]",
+        TypeScript: "fa-solid fa-code text-[#3178C6]",
+        Docker: "fa-brands fa-docker text-[#2496ED]",
+        AWS: "fa-brands fa-aws text-[#FF9900]",
+        Git: "fa-brands fa-git-alt text-[#F05032]",
+        Angular: "fa-brands fa-angular text-[#DD0031]",
+        Kotlin: "fa-brands fa-android text-[#7F52FF]",
+        "Jetpack Compose": "fa-solid fa-mobile-screen text-[#4285F4]",
+        "Android Studio": "fa-brands fa-android text-[#3DDC84]",
+        Astro: "fa-solid fa-rocket text-[#FF5D01]",
+        TailwindCSS: "fa-solid fa-wind text-[#06B6D4]",
+        Nextjs: "fa-solid fa-n text-white",
+        "Spring Boot": "fa-solid fa-leaf text-[#6DB33F]",
+        PostgreSQL: "fa-solid fa-database text-[#336791]",
+        "PL/pgSQL": "fa-solid fa-database text-[#336791]",
+        Firebase: "fa-solid fa-fire text-[#FFCA28]",
+        Figma: "fa-brands fa-figma text-[#F24E1E]",
+        Blockbench: "fa-solid fa-cube text-[#38BDF8]",
+        "Modelado 3D": "fa-solid fa-cubes text-[#38BDF8]",
+        "3D Modeling": "fa-solid fa-cubes text-[#38BDF8]",
+        "UI/UX Design": "fa-solid fa-pen-nib text-[#F24E1E]",
+        "pandas": "fa-solid fa-table text-[#150458]",
+        "NumPy": "fa-solid fa-cube text-[#013243]",
+        "Análisis de Datos": "fa-solid fa-chart-bar text-[#10A37F]",
+        "Data Analysis": "fa-solid fa-chart-bar text-[#10A37F]",
+        Microservicios: "fa-solid fa-cubes-stacked text-[#729FCF]",
+        "Netflix Eureka": "fa-solid fa-magnifying-glass text-[#E50914]",
+        "API Gateway": "fa-solid fa-door-open text-[#FF9900]",
+        "IA Generativa": "fa-solid fa-brain text-[#10A37F]",
+        "Jupyter Notebooks": "fa-solid fa-book text-[#F37626]",
+        "Minecraft Fabric API": "fa-solid fa-hammer text-[#ED8B00]",
+        "Minecraft Forge API": "fa-solid fa-hammer text-[#ED8B00]",
+        "Prompt Engineering": "fa-solid fa-terminal text-[#10A37F]",
+        "C#": "fa-solid fa-code text-[#239120]",
+        ".NET": "fa-brands fa-microsoft text-[#512BD4]",
+        Flutter: "fa-brands fa-flutter text-[#02569B]",
+        Dart: "fa-solid fa-code text-[#0175C2]",
+        SQLite: "fa-solid fa-database text-[#003B57]",
+        Expo: "fa-solid fa-mobile-screen-button text-[#000020]",
+        Express: "fa-brands fa-node-js text-[#000000] dark:text-white",
+        Electron: "fa-brands fa-react text-[#47848F]",
+        "Vue 3": "fa-brands fa-vuejs text-[#4FC08D]",
+        Vite: "fa-solid fa-bolt text-[#646CFF]",
+      };
+
+      function linkCard(link, ui) {
+        return `
+        <a href="${link.url}" target="_blank" rel="noreferrer"
+           class="group flex items-center gap-4 rounded-xl border border-neutral-800 bg-neutral-950/50 px-5 py-4 text-sm text-neutral-300 transition-all hover:border-blue-500 hover:bg-blue-500/5 hover:text-white">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-lg transition-transform group-hover:scale-110" style="color: ${link.color}">
+            <i class="${link.iconClass}"></i>
+          </div>
+          <div class="flex-1">
+            <span class="block font-semibold">${link.name}</span>
+            <span class="text-xs text-neutral-500">${ui.visitProfile}</span>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs text-neutral-600 transition-colors group-hover:text-blue-400"></i>
+        </a>`;
+      }
+
+      function featuredProjectCard(project) {
+        const achievements = project.achievements
+          .slice(0, 2)
+          .map(
+            (item) => `<li class="flex items-start gap-2">
+        <i class="fa-solid fa-check text-blue-500 mt-1 text-[10px]"></i>
+        <span>${item}</span>
+      </li>`,
+          )
+          .join("");
+
+        const technologies = project.technologies
+          .map((tech) => {
+            const icon =
+              TECH_ICONS[tech] || "fa-solid fa-microchip text-neutral-400";
+            return `<span class="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900 px-3 py-1 font-mono text-[10px] text-neutral-300 hover:border-neutral-600 transition-colors">
+            <i class="${icon} text-xs"></i>
+            ${tech}
+          </span>`;
+          })
+          .join("");
+
+        const mainTech = project.technologies[0];
+        const mainIcon = TECH_ICONS[mainTech] || "fa-solid fa-folder-open";
+
+        const hasMultiImages = project.images && project.images.length >= 3;
+        const imageHtml = project.images
+          ? hasMultiImages
+            ? project.images.slice(0, 3).map((img, i) =>
+              `<img src="${img}" alt="${project.title}" class="flex-1 max-w-[33%] h-full object-contain cursor-pointer" loading="lazy" onclick="event.stopPropagation();openLightbox('${project.title.replace(/'/g, "\\'")}', ${i})" />`
+            ).join("")
+            : `<img src="${project.images[0]}" alt="${project.title}" class="single-img cursor-pointer" loading="lazy" onclick="event.stopPropagation();openLightbox('${project.title.replace(/'/g, "\\'")}', 0)" />`
+          : "";
+
+        return `
+        <article class="featured-card group relative flex flex-col rounded-2xl border border-neutral-800 bg-neutral-900/40 transition-all hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden">
+          ${project.url ? `<a href="${project.url}" target="_blank" rel="noreferrer" class="absolute inset-0 z-10 pointer-events-none" aria-label="Ver proyecto ${project.title}"></a>` : ""}
+
+          <div class="relative z-0 flex flex-col h-full">
+            <div class="featured-image-container relative bg-neutral-950 overflow-hidden">
+              ${imageHtml}
+              <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute bottom-3 left-4 right-4 flex items-end justify-between pointer-events-none">
+                <div class="flex items-center gap-3">
+                  <div class="rounded-lg bg-blue-500/10 p-2.5 text-blue-400 backdrop-blur-sm">
+                    <i class="${mainIcon} text-lg"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-white drop-shadow-lg">${project.title}</h3>
+                    <p class="font-mono text-[10px] uppercase tracking-wider text-blue-300/90">${project.role}</p>
+                  </div>
+                </div>
+                <div class="flex gap-1.5 relative z-20 pointer-events-auto">
+                  ${
+                    project.links
+                      ? project.links
+                          .map(
+                            (l) => `
+                    <a href="${l.url}" target="_blank" rel="noreferrer" class="flex h-7 px-2.5 items-center justify-center rounded-full bg-neutral-800/70 text-neutral-400 transition-all hover:bg-neutral-700 hover:text-white backdrop-blur-sm" title="${l.name}">
+                      <span class="text-[9px] uppercase font-bold mr-1.5 tracking-wider">${l.name}</span> <i class="${l.icon || "fa-brands fa-github"} text-xs"></i>
+                    </a>
+                  `,
+                          )
+                          .join("")
+                      : `
+                    <a href="${project.url}" target="_blank" rel="noreferrer" class="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-800/70 text-neutral-400 transition-all hover:bg-neutral-700 hover:text-white backdrop-blur-sm" title="Ver código">
+                      <i class="fa-brands fa-github text-sm"></i>
+                    </a>
+                  `
+                  }
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex flex-col flex-1 cursor-pointer" onclick="window.open('${project.url}', '_blank')">
+              <p class="text-sm leading-relaxed text-neutral-400">${project.description}</p>
+              <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">${achievements}</ul>
+              <div class="mt-auto pt-4 flex flex-wrap gap-2">${technologies}</div>
+            </div>
+          </div>
+        </article>`;
+      }
+
+      function carouselCard(project) {
+        const technologies = project.technologies.slice(0, 3)
+          .map((tech) => {
+            const icon =
+              TECH_ICONS[tech] || "fa-solid fa-microchip text-neutral-400";
+            return `<span class="inline-flex items-center gap-1.5 rounded-full border border-neutral-800 bg-neutral-900 px-2.5 py-0.5 font-mono text-[9px] text-neutral-300">
+            <i class="${icon} text-[10px]"></i>
+            ${tech}
+          </span>`;
+          })
+          .join("");
+
+        const mainTech = project.technologies[0];
+        const mainIcon = TECH_ICONS[mainTech] || "fa-solid fa-folder-open";
+
+        return `
+        <a href="${project.url || '#'}" target="_blank" rel="noreferrer" class="carousel-card group flex-shrink-0 w-72 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 transition-all hover:-translate-y-1 hover:border-blue-500/50 hover:bg-neutral-900/60">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="rounded-lg bg-blue-500/10 p-2 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+              <i class="${mainIcon} text-sm"></i>
+            </div>
+            <div class="min-w-0">
+              <h3 class="text-sm font-bold text-white truncate group-hover:text-blue-400 transition-colors">${project.title}</h3>
+              <p class="font-mono text-[9px] uppercase tracking-wider text-neutral-500 truncate">${project.role}</p>
+            </div>
+          </div>
+          <p class="text-xs leading-relaxed text-neutral-500 line-clamp-2 mb-3">${project.description}</p>
+          <div class="flex flex-wrap gap-1.5">${technologies}</div>
+        </a>`;
+      }
+
+      function skillCard(category) {
+        const skills = category.skills
+          .map((skill) => {
+            const icon =
+              TECH_ICONS[skill] || "fa-solid fa-check text-neutral-600";
+            return `<div class="group/skill flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900/50 p-3 transition-all hover:border-neutral-600 hover:bg-neutral-800">
+            <i class="${icon} transition-transform group-hover/skill:scale-125"></i>
+            <span class="text-sm font-medium text-neutral-300 group-hover/skill:text-white">${skill}</span>
+          </div>`;
+          })
+          .join("");
+
+        // Mapping icon by category name doesn't work well across languages if name changes.
+        // Better to map by an index or use a fallback. We'll use a simple fallback mapping based on common keywords.
+        let icon = "fa-solid fa-layer-group";
+        const catName = category.name.toLowerCase();
+        if (catName.includes("lenguaj") || catName.includes("language"))
+          icon = "fa-solid fa-terminal";
+        else if (catName.includes("front")) icon = "fa-solid fa-display";
+        else if (catName.includes("back")) icon = "fa-solid fa-server";
+        else if (catName.includes("diseño") || catName.includes("design"))
+          icon = "fa-solid fa-pen-nib";
+        else if (catName.includes("dato") || catName.includes("data"))
+          icon = "fa-solid fa-database";
+        else if (catName.includes("devops")) icon = "fa-solid fa-infinity";
+        else if (catName.includes("móvil") || catName.includes("mobile"))
+          icon = "fa-solid fa-mobile-screen-button";
+
+        return `
+        <article class="rounded-2xl border border-neutral-800 bg-neutral-950/30 p-6 backdrop-blur-sm transition-all hover:bg-neutral-900/30">
+          <div class="mb-6 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
+              <i class="${icon} text-lg"></i>
+            </div>
+            <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-white">${category.name}</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-3">${skills}</div>
+        </article>`;
+      }
+
+      function renderUI() {
+        if (!portfolioData) return;
+
+        const data = portfolioData[currentLang];
+        const info = data.info;
+        const projects = data.projects;
+        const ui = data.ui;
+
+        // Update texts
+        document.getElementById("ui-subtitle").textContent = ui.subtitle;
+        document.getElementById("name").textContent = info.fullTexts.name;
+        document.getElementById("role").textContent = info.fullTexts.role;
+        document.getElementById("location").textContent =
+          info.fullTexts.location;
+        document.getElementById("project-count").textContent =
+          `${projects.length} ${ui.projectsCount}`;
+        document.getElementById("ui-contact").textContent = ui.contact;
+        document.getElementById("ui-skills").textContent = ui.skills;
+        document.getElementById("ui-projects").textContent = ui.projects;
+        document.getElementById("ui-copyright").innerHTML =
+          ui.copyright.replace("{year}", new Date().getFullYear());
+
+        // Update language buttons styling
+        const btnEs = document.getElementById("btn-es");
+        const btnEn = document.getElementById("btn-en");
+        if (currentLang === "es") {
+          btnEs.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-white bg-blue-600";
+          btnEn.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-neutral-400 hover:text-white";
+          document.documentElement.lang = "es";
+        } else {
+          btnEn.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-white bg-blue-600";
+          btnEs.className =
+            "rounded-full px-3 py-1 text-xs font-medium transition-all text-neutral-400 hover:text-white";
+          document.documentElement.lang = "en";
+        }
+
+        // Render grids
+        socialLinks.innerHTML = info.socialLinks
+          .map((link) => linkCard(link, ui))
+          .join("");
+
+        const featured = projects.filter(p => p.images && p.images.length > 0);
+        const others = projects.filter(p => !p.images || p.images.length === 0);
+
+        featuredGrid.innerHTML = featured.map(featuredProjectCard).join("");
+
+        if (others.length > 0) {
+          carouselSection.classList.remove("hidden");
+          document.getElementById("ui-more-projects").textContent = ui.moreProjects;
+          carouselTrack.innerHTML = others.map(carouselCard).join("") + others.map(carouselCard).join("");
+          initCarousel();
+        } else {
+          carouselSection.classList.add("hidden");
+        }
+
+        skillsGrid.innerHTML = info.skillCategories.map(skillCard).join("");
+      }
+
+      window.switchLanguage = function (lang) {
+        if (currentLang === lang) return;
+        currentLang = lang;
+        localStorage.setItem("portfolio_lang", lang);
+        renderUI();
+      };
+
+      let carouselPaused = false;
+      let carouselAnimId = null;
+
+      function initCarousel() {
+        if (carouselAnimId) cancelAnimationFrame(carouselAnimId);
+        carouselPaused = false;
+
+        const track = carouselTrack;
+        const cardWidth = track.children[0] ? track.children[0].offsetWidth + 24 : 300;
+        const halfWidth = cardWidth * (track.children.length / 2);
+        let pos = 0;
+
+        function step() {
+          if (!carouselPaused) {
+            pos -= 1;
+            if (Math.abs(pos) >= halfWidth) pos = 0;
+            track.style.transform = `translateX(${pos}px)`;
+          }
+          carouselAnimId = requestAnimationFrame(step);
+        }
+
+        track.addEventListener("mouseenter", () => { carouselPaused = true; });
+        track.addEventListener("mouseleave", () => { carouselPaused = false; });
+
+        const prevBtn = document.getElementById("carousel-prev");
+        const nextBtn = document.getElementById("carousel-next");
+        if (prevBtn) prevBtn.onclick = () => { pos += cardWidth; track.style.transform = `translateX(${pos}px)`; };
+        if (nextBtn) nextBtn.onclick = () => { pos -= cardWidth; track.style.transform = `translateX(${pos}px)`; };
+
+        step();
+      }
+
+      function openLightbox(projectTitle, index) {
+        const proj = portfolioData[currentLang].projects.find(p => p.title === projectTitle);
+        if (!proj || !proj.images) return;
+        lbImages = proj.images;
+        lbIndex = Math.min(index, lbImages.length - 1);
+        showLightboxImage();
+        document.getElementById("lightbox").classList.remove("hidden");
+        document.getElementById("lightbox").classList.add("flex");
+        document.body.style.overflow = "hidden";
+        document.addEventListener("keydown", lbKeyHandler);
+      }
+
+      function showLightboxImage() {
+        const img = document.getElementById("lightbox-img");
+        img.src = lbImages[lbIndex];
+        img.alt = "";
+        document.getElementById("lb-prev").style.display = lbImages.length > 1 ? "flex" : "none";
+        document.getElementById("lb-next").style.display = lbImages.length > 1 ? "flex" : "none";
+      }
+
+      function navigateLightbox(dir) {
+        lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+        showLightboxImage();
+      }
+
+      function closeLightbox(e) {
+        if (e && e.target !== e.currentTarget) return;
+        document.getElementById("lightbox").classList.add("hidden");
+        document.getElementById("lightbox").classList.remove("flex");
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", lbKeyHandler);
+      }
+
+      function lbKeyHandler(e) {
+        if (e.key === "Escape") closeLightbox({ target: document.getElementById("lightbox"), currentTarget: document.getElementById("lightbox") });
+        if (e.key === "ArrowLeft") navigateLightbox(-1);
+        if (e.key === "ArrowRight") navigateLightbox(1);
+      }
+
+      async function loadData() {
+        try {
+          const response = await fetch("/data/i18n.json");
+          portfolioData = await response.json();
+          renderUI();
+        } catch (error) {
+          console.error("Error cargando el portfolio:", error);
+        }
+      }
+
+      loadData();
+    </script> </body> </html>

@@ -5,6 +5,7 @@
       "contact": "Contacto",
       "skills": "Skills & Tecnologías",
       "projects": "Proyectos Destacados",
+      "moreProjects": "Más Proyectos",
       "visitProfile": "Visitar perfil",
       "projectsCount": "proyectos",
       "copyright": "© {year} Miguel Angel Ceballos"
@@ -106,7 +107,8 @@
           { "name": "Frontend", "url": "https://github.com/Alejma/TaskPro-Frontend" },
           { "name": "Backend", "url": "https://github.com/Alejma/TaskPro-Backend" }
         ],
-        "images": ["/images/proyectos/taskpro/1.png", "/images/proyectos/taskpro/2.png", "/images/proyectos/taskpro/3.png"]
+        "url": "https://github.com/Alejma/TaskPro-Frontend",
+        "images": ["/images/proyectos/taskpro/1.png", "/images/proyectos/taskpro/2.png"]
       },
       {
         "title": "WikiFut",
@@ -134,7 +136,8 @@
           "Gestor de materias con carga desde Excel y matriculación rápida al SIRA",
           "Generación de APK con Expo Application Services"
         ],
-        "url": "https://github.com/Ceball0s/UnivalleMatriculaApp"
+        "url": "https://github.com/Ceball0s/UnivalleMatriculaApp",
+        "images": ["/images/proyectos/matriculaapp/1.jpeg", "/images/proyectos/matriculaapp/2.jpeg", "/images/proyectos/matriculaapp/3.jpeg"]
       },
       {
         "title": "Java Minecraft Modding",
@@ -195,6 +198,7 @@
       "contact": "Contact",
       "skills": "Skills & Technologies",
       "projects": "Featured Projects",
+      "moreProjects": "More Projects",
       "visitProfile": "Visit profile",
       "projectsCount": "projects",
       "copyright": "© {year} Miguel Angel Ceballos"
@@ -296,7 +300,8 @@
           { "name": "Frontend", "url": "https://github.com/Alejma/TaskPro-Frontend" },
           { "name": "Backend", "url": "https://github.com/Alejma/TaskPro-Backend" }
         ],
-        "images": ["/images/proyectos/taskpro/1.png", "/images/proyectos/taskpro/2.png", "/images/proyectos/taskpro/3.png"]
+        "url": "https://github.com/Alejma/TaskPro-Frontend",
+        "images": ["/images/proyectos/taskpro/1.png", "/images/proyectos/taskpro/2.png"]
       },
       {
         "title": "WikiFut",
